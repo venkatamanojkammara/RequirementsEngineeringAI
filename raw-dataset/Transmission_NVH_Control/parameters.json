@@ -1,8 +1,0 @@
-{
-"parameters":[
-"Max_Clutch_Limit",
-"NVH_Vibration_Threshold",
-"Shift_Vibration_Limit",
-"NVH_Update_Interval"
-]
-}

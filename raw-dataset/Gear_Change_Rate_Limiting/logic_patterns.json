@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF Time_Since_Last_Shift < Limit THEN Reject_Shift",
-"IF Timer > Limit THEN Allow_Shift",
-"IF Speed > Threshold THEN Adjust_Rate_Limit",
-"IF Fault = TRUE THEN Disable_Rate_Limit",
-"IF Timer > Interval THEN Update_Parameters"
-]
-}

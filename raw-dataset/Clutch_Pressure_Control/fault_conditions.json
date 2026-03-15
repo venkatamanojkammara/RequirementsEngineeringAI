@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Pressure_Sensor_Fault",
-"Hydraulic_System_Fault",
-"Clutch_Slip_Fault",
-"Low_Pressure_Fault",
-"High_Pressure_Fault"
-]
-}

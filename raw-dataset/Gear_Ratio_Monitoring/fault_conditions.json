@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Gear_Ratio_Mismatch",
-"Clutch_Slip_Fault",
-"Output_Speed_Fault",
-"RPM_Sensor_Fault",
-"Gearbox_Mechanical_Fault"
-]
-}

@@ -1,9 +1,0 @@
-{
-"parameters":[
-"Message_Timeout_Limit",
-"Delay_Limit",
-"Valid_Range",
-"CAN_Fault_Limit",
-"Default_Gear"
-]
-}

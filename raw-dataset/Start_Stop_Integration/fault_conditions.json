@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Start_Stop_Fault",
-"Restart_Control_Fault",
-"Engine_State_Sensor_Fault",
-"Torque_Control_Fault",
-"Clutch_Pressure_Fault"
-]
-}

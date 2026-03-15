@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF Mode_Request = X THEN Set_Mode",
-"IF Speed > Limit THEN Reject_Mode_Change",
-"IF Shift_State = Active THEN Block_Mode_Transition",
-"IF Fault = TRUE THEN Maintain_Current_Mode",
-"IF Condition1 AND Condition2 THEN Transition_Action"
-]
-}

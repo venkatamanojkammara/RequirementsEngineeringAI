@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Shift_Request_Conflict",
-"Arbitration_Fault",
-"Shift_Timeout_Fault",
-"Invalid_Gear_Request",
-"Shift_Control_Fault"
-]
-}

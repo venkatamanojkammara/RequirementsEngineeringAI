@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF Request_A AND Request_B THEN Apply_Priority",
-"IF Shift_State = Active THEN Reject_New_Request",
-"IF Signal > Limit THEN Cancel_Request",
-"IF Fault = TRUE THEN Maintain_Default_Gear",
-"IF Condition1 AND Condition2 THEN Execute_Shift"
-]
-}

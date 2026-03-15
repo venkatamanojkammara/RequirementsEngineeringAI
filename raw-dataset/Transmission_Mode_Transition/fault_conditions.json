@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Mode_Transition_Fault",
-"Manual_Mode_Fault",
-"Torque_Control_Fault",
-"Speed_Sensor_Fault",
-"System_Fault"
-]
-}

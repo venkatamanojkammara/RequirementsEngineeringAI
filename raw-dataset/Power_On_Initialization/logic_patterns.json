@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF ECU_Power_State = ON THEN Initialize_System",
-"IF Check_Result = Failed THEN Fault_Action",
-"IF Signal OUTSIDE Range THEN Fault_Action",
-"IF Fault = TRUE THEN Activate_Protection",
-"IF Condition1 AND Condition2 THEN System_Action"
-]
-}

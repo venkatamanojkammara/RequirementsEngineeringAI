@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Adaptive_Learning_Fault",
-"Throttle_Sensor_Fault",
-"Learning_System_Fault",
-"Adaptive_Control_Fault",
-"Driver_Profile_Error"
-]
-}

@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Critical_System_Fault",
-"Severe_Fault",
-"Gear_State_Fault",
-"Torque_Control_Fault",
-"Speed_Sensor_Fault"
-]
-}

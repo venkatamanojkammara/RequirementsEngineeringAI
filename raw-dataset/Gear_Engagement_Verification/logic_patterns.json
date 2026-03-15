@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF Commanded_Gear = Actual_Gear THEN Confirm_Engagement",
-"IF Ratio OUTSIDE Range THEN Trigger_Fault",
-"IF Timer > Timeout THEN Engagement_Failure",
-"IF Fault = TRUE THEN Activate_Protection_Mode",
-"IF Timer > Interval THEN Update_Verification_Parameters"
-]
-}

@@ -1,8 +1,0 @@
-{
-"parameters":[
-"Fail_Safe_Gear",
-"FailSafe_Torque_Limit",
-"FailSafe_Speed_Limit",
-"Fault_Threshold"
-]
-}
