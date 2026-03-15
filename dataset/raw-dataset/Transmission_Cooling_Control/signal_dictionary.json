@@ -1,0 +1,13 @@
+{
+"signals":[
+"Transmission_Oil_Temp",
+"Cooling_System_Active",
+"Cooling_Fault",
+"Temperature_Rise_Rate",
+"Cooling_Fan_Speed",
+"Oil_Pump_Speed",
+"Temp_Sensor_Fault",
+"Cooling_System_Fault",
+"Fault_Source"
+]
+}

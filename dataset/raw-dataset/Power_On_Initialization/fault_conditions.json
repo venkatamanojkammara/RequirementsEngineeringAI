@@ -1,0 +1,10 @@
+{
+"fault_conditions":[
+"Initialization_Fault",
+"Memory_Fault",
+"Sensor_Initialization_Fault",
+"CAN_Initialization_Fault",
+"Actuator_Fault",
+"Gear_Position_Fault"
+]
+}

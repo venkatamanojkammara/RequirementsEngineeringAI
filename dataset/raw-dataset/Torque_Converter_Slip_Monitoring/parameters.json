@@ -1,0 +1,15 @@
+{
+"parameters":[
+"Slip_Limit",
+"Critical_Slip",
+"Severe_Slip",
+"Abnormal_Slip",
+"Slip_Time_Limit",
+"Slip_Event_Limit",
+"Cruise_Speed",
+"Throttle_Limit",
+"Load_Limit",
+"Efficiency_Min_RPM",
+"Efficiency_Max_RPM"
+]
+}

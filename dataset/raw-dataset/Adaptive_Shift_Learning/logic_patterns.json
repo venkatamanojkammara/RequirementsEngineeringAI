@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF <Signal> > <Threshold> THEN <Driving_Style_Action>",
+"IF <Signal> <= <Threshold> THEN <Normal_Action>",
+"IF <Profile> = <Type> THEN Apply_Shift_Map",
+"IF <Fault> = TRUE THEN Activate_Protection",
+"IF <Condition1> AND <Condition2> THEN <Action>"
+]
+}

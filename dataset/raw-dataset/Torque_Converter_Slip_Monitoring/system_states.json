@@ -1,0 +1,12 @@
+{
+"system_states":[
+"Normal_Operation",
+"Lockup_Engaged",
+"Lockup_Disengaged",
+"Slip_Detected",
+"FailSafe_Mode",
+"Startup",
+"Shutdown",
+"Diagnostic_Mode"
+]
+}

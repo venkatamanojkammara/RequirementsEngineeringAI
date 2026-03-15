@@ -1,0 +1,17 @@
+{
+"signals":[
+"Sensor_Status",
+"CAN_Communication_Status",
+"Clutch_Slip",
+"Actual_Gear_Ratio",
+"Expected_Gear_Ratio",
+"Transmission_Oil_Temp",
+"Shift_Actuator_Status",
+"Fault_Code",
+"Vehicle_Speed_Signal",
+"Hydraulic_Pressure",
+"Gear_Position",
+"Commanded_Gear",
+"Transmission_Fault"
+]
+}

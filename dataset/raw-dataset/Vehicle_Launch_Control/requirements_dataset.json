@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"VLC_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable launch control when vehicle starts from standstill.",
+"L3_requirement":"The TCU shall activate launch control when Vehicle_Speed equals zero and throttle input exceeds threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed = 0 AND Throttle_Position > Launch_Throttle_Threshold THEN Activate_Launch_Control",
+"IF Launch_Control_Mode = Active THEN Enable_Clutch_Control",
+"IF Launch_Control_Mode = Active THEN Monitor_Engine_Torque",
+"IF Launch_Control_Mode = Active THEN Limit_Wheel_Slip",
+"IF Launch_Control_Mode = Active THEN Log_Launch_Event"
+]
+}
+},
+
+{
+"sample_id":"VLC_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall regulate clutch engagement during vehicle launch.",
+"L3_requirement":"The TCU shall gradually increase clutch pressure during launch phase."
+},
+"output":{
+"L4_requirements":[
+"IF Launch_Control_Mode = Active THEN Increase_Clutch_Pressure_Gradually",
+"IF Clutch_Pressure > Max_Clutch_Limit THEN Limit_Clutch_Pressure",
+"IF Launch_Control_Mode = Active THEN Monitor_Clutch_State",
+"IF Clutch_Control_Fault = TRUE THEN Disable_Launch_Control",
+"IF Launch_Control_Mode = Active THEN Log_Clutch_Control_Event"
+]
+}
+},
+
+{
+"sample_id":"VLC_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent launch when brake pedal is applied.",
+"L3_requirement":"The TCU shall disable launch control when Brake_Pedal equals pressed."
+},
+"output":{
+"L4_requirements":[
+"IF Brake_Pedal = Pressed THEN Disable_Launch_Control",
+"IF Brake_Pedal = Released AND Vehicle_Speed = 0 THEN Allow_Launch_Control",
+"IF Launch_Request = TRUE AND Brake_Pedal = Pressed THEN Reject_Launch_Request",
+"IF Brake_Sensor_Fault = TRUE THEN Disable_Launch_Control",
+"IF Brake_Pedal = Pressed THEN Log_Launch_Rejection"
+]
+}
+},
+
+{
+"sample_id":"VLC_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall limit engine torque during launch.",
+"L3_requirement":"The TCU shall restrict engine torque when launch control is active."
+},
+"output":{
+"L4_requirements":[
+"IF Launch_Control_Mode = Active THEN Limit_Engine_Torque",
+"IF Engine_Torque > Launch_Torque_Limit THEN Reduce_Torque",
+"IF Launch_Control_Mode = Active THEN Monitor_Torque_Level",
+"IF Torque_Control_Fault = TRUE THEN Disable_Launch_Control",
+"IF Launch_Control_Mode = Active THEN Log_Torque_Control_Event"
+]
+}
+},
+
+{
+"sample_id":"VLC_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent wheel slip during launch.",
+"L3_requirement":"The TCU shall monitor wheel speed difference during launch."
+},
+"output":{
+"L4_requirements":[
+"IF Wheel_Slip > Slip_Limit THEN Reduce_Engine_Torque",
+"IF Wheel_Slip <= Slip_Limit THEN Maintain_Launch_Control",
+"IF Wheel_Slip > Slip_Limit THEN Trigger_Slip_Control",
+"IF Wheel_Speed_Sensor_Fault = TRUE THEN Disable_Slip_Monitor",
+"IF Launch_Control_Mode = Active THEN Monitor_Wheel_Speed"
+]
+}
+},
+
+{
+"sample_id":"VLC_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect launch phase completion.",
+"L3_requirement":"The TCU shall exit launch control when vehicle speed exceeds launch speed limit."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Launch_Speed_Limit THEN Deactivate_Launch_Control",
+"IF Launch_Control_Mode = Inactive THEN Enable_Normal_Shifting",
+"IF Vehicle_Speed <= Launch_Speed_Limit THEN Maintain_Launch_Control",
+"IF Launch_Control_Mode = Active THEN Monitor_Vehicle_Speed",
+"IF Launch_Control_Mode = Inactive THEN Log_Launch_Completion"
+]
+}
+},
+
+{
+"sample_id":"VLC_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect launch control faults.",
+"L3_requirement":"The TCU shall detect fault when launch control parameters exceed limits."
+},
+"output":{
+"L4_requirements":[
+"IF Launch_Parameter > Launch_Parameter_Limit THEN Launch_Control_Fault = TRUE",
+"IF Launch_Control_Fault = TRUE THEN Disable_Launch_Control",
+"IF Launch_Control_Fault = TRUE THEN Trigger_Launch_DTC",
+"IF Launch_Control_Fault = TRUE THEN Activate_Protection_Mode",
+"IF Launch_Control_Fault = TRUE THEN Log_Launch_Fault"
+]
+}
+},
+
+{
+"sample_id":"VLC_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall verify driver launch request.",
+"L3_requirement":"The TCU shall activate launch control only when driver throttle request exceeds threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Position > Launch_Throttle_Threshold THEN Launch_Request = TRUE",
+"IF Launch_Request = TRUE AND Vehicle_Speed = 0 THEN Activate_Launch_Control",
+"IF Throttle_Position <= Launch_Throttle_Threshold THEN Reject_Launch_Request",
+"IF Throttle_Sensor_Fault = TRUE THEN Disable_Launch_Control",
+"IF Launch_Request = TRUE THEN Log_Launch_Request_Event"
+]
+}
+},
+
+{
+"sample_id":"VLC_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe operation during launch control.",
+"L3_requirement":"The TCU shall activate protection mode when abnormal launch condition occurs."
+},
+"output":{
+"L4_requirements":[
+"IF Abnormal_Launch_Condition = TRUE THEN Activate_Protection_Mode",
+"IF Protection_Mode = Active THEN Disable_Launch_Control",
+"IF Abnormal_Launch_Condition = TRUE THEN Trigger_Launch_Fault_DTC",
+"IF Protection_Mode = Active THEN Maintain_Current_Gear",
+"IF Protection_Mode = Active THEN Log_System_State"
+]
+}
+},
+
+{
+"sample_id":"VLC_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall log launch control events.",
+"L3_requirement":"The TCU shall record diagnostic data during launch control operation."
+},
+"output":{
+"L4_requirements":[
+"IF Launch_Control_Mode = Active THEN Store_Launch_Diagnostic_Record",
+"IF Launch_Control_Mode = Active THEN Log_Launch_Event",
+"IF Launch_Control_Mode = Active THEN Monitor_Launch_Parameters",
+"IF Diagnostic_System_Fault = TRUE THEN Disable_Event_Logging",
+"IF Launch_Control_Mode = Active THEN Trigger_Launch_Status_Log"
+]
+}
+}
+]

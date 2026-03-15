@@ -1,0 +1,9 @@
+{
+"fault_conditions":[
+"Clutch_Slip_Fault",
+"Hydraulic_Pressure_Fault",
+"Clutch_Wear_Fault",
+"Slip_Sensor_Fault",
+"RPM_Sensor_Fault"
+]
+}

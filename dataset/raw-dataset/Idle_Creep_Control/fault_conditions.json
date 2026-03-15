@@ -1,0 +1,9 @@
+{
+"fault_conditions":[
+"Creep_Function_Fault",
+"Brake_Sensor_Fault",
+"Speed_Sensor_Fault",
+"Torque_Control_Fault",
+"Gear_Position_Sensor_Fault"
+]
+}

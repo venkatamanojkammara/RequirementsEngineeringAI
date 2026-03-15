@@ -1,0 +1,8 @@
+{
+"fault_conditions":[
+"Safety_Interlock_Fault",
+"Gear_Conflict",
+"System_Fault",
+"Brake_Sensor_Fault"
+]
+}

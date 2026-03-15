@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate warm-up strategy during cold start.",
+"L3_requirement":"The TCU shall enable warm-up mode when Transmission_Oil_Temp is below Warmup_Temp_Threshold."
+},
+"expected_output":[
+"IF Transmission_Oil_Temp < Warmup_Temp_Threshold THEN Warmup_Mode = Enabled",
+"IF Transmission_Oil_Temp >= Warmup_Temp_Threshold THEN Warmup_Mode = Disabled",
+"IF Warmup_Mode = Enabled THEN Apply_Warmup_Shift_Map",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Disable_Warmup_Mode"
+]
+}
+]

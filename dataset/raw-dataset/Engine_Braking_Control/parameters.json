@@ -1,0 +1,13 @@
+{
+"parameters":[
+"Deceleration_Threshold",
+"Critical_Deceleration",
+"Emergency_Deceleration",
+"Braking_Speed_Threshold",
+"Min_Braking_Speed",
+"Downhill_Speed",
+"Max_RPM",
+"Critical_RPM",
+"Critical_Throttle"
+]
+}

@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF Vehicle_Speed = 0 AND Throttle > Threshold THEN Launch_Control",
+"IF Signal > Limit THEN Limit_Output",
+"IF Fault = TRUE THEN Disable_Launch_Control",
+"IF Speed > Launch_Limit THEN Exit_Launch_Control",
+"IF Condition1 AND Condition2 THEN Launch_Action"
+]
+}

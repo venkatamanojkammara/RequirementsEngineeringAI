@@ -1,0 +1,15 @@
+{
+"signals":[
+"Limp_Home_Mode",
+"Transmission_Fault_Level",
+"CAN_Communication_Status",
+"Vehicle_Speed",
+"Engine_Load",
+"Throttle_Position",
+"Kickdown_Request",
+"Gear_Position",
+"Mode_Change_Request",
+"Fault_Clear_Confirmation",
+"TCU_State"
+]
+}

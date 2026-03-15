@@ -1,0 +1,10 @@
+{
+"system_states":[
+"Startup_State",
+"Initialization_In_Progress",
+"System_Ready",
+"Protection_Mode",
+"Limp_Mode",
+"Diagnostic_Mode"
+]
+}

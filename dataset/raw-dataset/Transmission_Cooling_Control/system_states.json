@@ -1,0 +1,11 @@
+{
+"system_states":[
+"Normal_Operation",
+"Cooling_Active",
+"High_Temperature_Detected",
+"Protection_Mode",
+"Limp_Mode",
+"Diagnostic_Mode",
+"Recovery_Mode"
+]
+}

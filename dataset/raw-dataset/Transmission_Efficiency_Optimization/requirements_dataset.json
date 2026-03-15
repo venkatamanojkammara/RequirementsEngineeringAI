@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"TEO_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall optimize gear shifting for fuel efficiency.",
+"L3_requirement":"The TCU shall perform early upshift when throttle input is low."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Position < Eco_Throttle_Threshold THEN Execute_Early_Upshift",
+"IF Early_Upshift_Executed = TRUE THEN Monitor_Engine_Speed",
+"IF Throttle_Position >= Eco_Throttle_Threshold THEN Maintain_Normal_Shift",
+"IF Early_Upshift_Executed = TRUE THEN Log_Efficiency_Shift_Event",
+"IF Efficiency_Mode = Active THEN Optimize_Shift_Strategy"
+]
+}
+},
+
+{
+"sample_id":"TEO_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain engine operation in efficient RPM range.",
+"L3_requirement":"The TCU shall select gear that keeps engine speed within efficiency band."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Speed < Efficiency_RPM_Min THEN Downshift",
+"IF Engine_Speed > Efficiency_RPM_Max THEN Upshift",
+"IF Engine_Speed BETWEEN Efficiency_RPM_Min AND Efficiency_RPM_Max THEN Maintain_Gear",
+"IF Efficiency_Mode = Active THEN Monitor_Engine_RPM",
+"IF Efficiency_Mode = Active THEN Log_RPM_Optimization_Event"
+]
+}
+},
+
+{
+"sample_id":"TEO_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall avoid unnecessary downshifts.",
+"L3_requirement":"The TCU shall delay downshift when engine torque is sufficient."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Torque > Torque_Hold_Limit THEN Delay_Downshift",
+"IF Engine_Torque <= Torque_Hold_Limit THEN Allow_Downshift",
+"IF Efficiency_Mode = Active THEN Monitor_Torque_Level",
+"IF Torque_Sensor_Fault = TRUE THEN Disable_Efficiency_Logic",
+"IF Engine_Torque > Torque_Hold_Limit THEN Log_Downshift_Delay"
+]
+}
+},
+
+{
+"sample_id":"TEO_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall optimize shifts in Eco mode.",
+"L3_requirement":"The TCU shall activate eco shift map when Driving_Mode equals Eco."
+},
+"output":{
+"L4_requirements":[
+"IF Driving_Mode = Eco THEN Load_Eco_Shift_Map",
+"IF Eco_Shift_Map_Loaded = TRUE THEN Apply_Eco_Shift_Strategy",
+"IF Driving_Mode != Eco THEN Disable_Efficiency_Mode",
+"IF Eco_Shift_Map_Loaded = TRUE THEN Monitor_Shift_Behavior",
+"IF Driving_Mode = Eco THEN Log_Eco_Mode_Activation"
+]
+}
+},
+
+{
+"sample_id":"TEO_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall optimize shift timing using vehicle speed.",
+"L3_requirement":"The TCU shall perform upshift when vehicle speed exceeds eco threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Eco_Speed_Threshold THEN Execute_Upshift",
+"IF Vehicle_Speed <= Eco_Speed_Threshold THEN Maintain_Current_Gear",
+"IF Efficiency_Mode = Active THEN Monitor_Vehicle_Speed",
+"IF Speed_Sensor_Fault = TRUE THEN Disable_Efficiency_Logic",
+"IF Vehicle_Speed > Eco_Speed_Threshold THEN Log_Eco_Upshift_Event"
+]
+}
+},
+
+{
+"sample_id":"TEO_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adjust shift logic using estimated load.",
+"L3_requirement":"The TCU shall delay upshift when estimated load exceeds threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Estimated_Load > Load_Efficiency_Limit THEN Delay_Upshift",
+"IF Estimated_Load <= Load_Efficiency_Limit THEN Allow_Upshift",
+"IF Efficiency_Mode = Active THEN Monitor_Load_Estimate",
+"IF Load_Estimation_Fault = TRUE THEN Disable_Efficiency_Logic",
+"IF Estimated_Load > Load_Efficiency_Limit THEN Log_Load_Adjustment_Event"
+]
+}
+},
+
+{
+"sample_id":"TEO_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable efficiency optimization during high power demand.",
+"L3_requirement":"The TCU shall deactivate eco shift strategy when throttle exceeds threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Position > Power_Demand_Threshold THEN Disable_Efficiency_Mode",
+"IF Throttle_Position <= Power_Demand_Threshold THEN Enable_Efficiency_Mode",
+"IF Efficiency_Mode = Disabled THEN Resume_Normal_Shifting",
+"IF Throttle_Position > Power_Demand_Threshold THEN Log_Mode_Disable_Event",
+"IF Efficiency_Mode = Disabled THEN Monitor_Driver_Input"
+]
+}
+},
+
+{
+"sample_id":"TEO_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect efficiency optimization faults.",
+"L3_requirement":"The TCU shall detect fault when eco shift logic fails."
+},
+"output":{
+"L4_requirements":[
+"IF Eco_Shift_Error = TRUE THEN Efficiency_Logic_Fault = TRUE",
+"IF Efficiency_Logic_Fault = TRUE THEN Disable_Efficiency_Mode",
+"IF Efficiency_Logic_Fault = TRUE THEN Trigger_Efficiency_DTC",
+"IF Efficiency_Logic_Fault = TRUE THEN Maintain_Default_Shift_Map",
+"IF Efficiency_Logic_Fault = TRUE THEN Log_Efficiency_Fault"
+]
+}
+},
+
+{
+"sample_id":"TEO_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall monitor efficiency optimization activity.",
+"L3_requirement":"The TCU shall record diagnostics during efficiency mode operation."
+},
+"output":{
+"L4_requirements":[
+"IF Efficiency_Mode = Active THEN Record_Efficiency_State",
+"IF Efficiency_Mode = Active THEN Monitor_Shift_Parameters",
+"IF Efficiency_Mode = Active THEN Log_Efficiency_Event",
+"IF Diagnostic_System_Fault = TRUE THEN Disable_State_Logging",
+"IF Efficiency_Mode = Active THEN Store_Diagnostic_Record"
+]
+}
+},
+
+{
+"sample_id":"TEO_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall periodically update efficiency optimization logic.",
+"L3_requirement":"The TCU shall refresh efficiency parameters at configured interval."
+},
+"output":{
+"L4_requirements":[
+"IF Efficiency_Timer > Efficiency_Update_Interval THEN Refresh_Efficiency_Parameters",
+"IF Efficiency_Timer <= Efficiency_Update_Interval THEN Maintain_Current_Parameters",
+"IF Efficiency_Timer > Efficiency_Update_Interval THEN Reset_Timer",
+"IF Efficiency_Mode = Active THEN Monitor_Timer_Status",
+"IF Efficiency_Timer > Efficiency_Update_Interval THEN Log_Parameter_Update"
+]
+}
+}
+]

@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"SQO_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall optimize shift quality during gear changes.",
+"L3_requirement":"The TCU shall reduce engine torque during shift execution."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_State = Active THEN Request_Torque_Reduction",
+"IF Shift_State = Completed THEN Restore_Normal_Torque",
+"IF Torque_Reduction_Command = Active THEN Monitor_Shift_Smoothness",
+"IF Engine_Control_Fault = TRUE THEN Disable_Torque_Request",
+"IF Shift_State = Active THEN Log_Shift_Event"
+]
+}
+},
+
+{
+"sample_id":"SQO_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall smooth clutch engagement during shifting.",
+"L3_requirement":"The TCU shall control clutch pressure ramp during gear engagement."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_State = Active THEN Increase_Clutch_Pressure_By_Ramp",
+"IF Clutch_Pressure >= Target_Pressure THEN Maintain_Current_Pressure",
+"IF Ramp_Rate > Max_Ramp_Rate THEN Trigger_Ramp_Fault",
+"IF Clutch_State = Engaged THEN Stop_Pressure_Ramp",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Ramp_Control"
+]
+}
+},
+
+{
+"sample_id":"SQO_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent harsh shifts.",
+"L3_requirement":"The TCU shall detect harsh shift when Shift_Jerk exceeds Jerk_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Jerk > Jerk_Limit THEN Harsh_Shift_Fault = TRUE",
+"IF Harsh_Shift_Fault = TRUE THEN Reduce_Torque_Request",
+"IF Shift_Jerk <= Jerk_Limit THEN Maintain_Normal_Operation",
+"IF Harsh_Shift_Fault = TRUE THEN Log_Diagnostic_Data",
+"IF Jerk_Sensor_Fault = TRUE THEN Disable_Jerk_Monitor"
+]
+}
+},
+
+{
+"sample_id":"SQO_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adjust shift timing for smooth operation.",
+"L3_requirement":"The TCU shall delay shift execution when engine torque is unstable."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Torque_Stability = FALSE THEN Delay_Shift_Command",
+"IF Engine_Torque_Stability = TRUE THEN Execute_Shift_Command",
+"IF Delay_Timer > Shift_Delay_Limit THEN Trigger_Shift_Timing_DTC",
+"IF Engine_Torque_Stability = FALSE THEN Monitor_Torque_Variation",
+"IF Torque_Sensor_Fault = TRUE THEN Disable_Torque_Monitor"
+]
+}
+},
+
+{
+"sample_id":"SQO_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall synchronize torque reduction and clutch engagement.",
+"L3_requirement":"The TCU shall coordinate torque reduction with clutch engagement timing."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_State = Active THEN Request_Torque_Reduction",
+"IF Torque_Reduction_Active = TRUE THEN Start_Clutch_Engagement",
+"IF Clutch_Engaged = TRUE THEN Restore_Normal_Torque",
+"IF Synchronization_Error = TRUE THEN Trigger_Shift_Sync_DTC",
+"IF Sync_Timer_Fault = TRUE THEN Disable_Sync_Control"
+]
+}
+},
+
+{
+"sample_id":"SQO_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adjust torque during downshifts.",
+"L3_requirement":"The TCU shall increase engine torque briefly during downshift synchronization."
+},
+"output":{
+"L4_requirements":[
+"IF Downshift_Command = TRUE THEN Request_Torque_Increase",
+"IF Gear_Engaged = TRUE THEN Restore_Normal_Torque",
+"IF Torque_Adjustment > Torque_Limit THEN Trigger_Torque_DTC",
+"IF Downshift_Command = TRUE THEN Monitor_Synchronization",
+"IF Engine_Control_Fault = TRUE THEN Disable_Torque_Adjustment"
+]
+}
+},
+
+{
+"sample_id":"SQO_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect poor shift quality.",
+"L3_requirement":"The TCU shall detect shift quality fault when vibration exceeds Vibration_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Vibration > Vibration_Limit THEN Shift_Quality_Fault = TRUE",
+"IF Shift_Quality_Fault = TRUE THEN Trigger_Shift_Quality_DTC",
+"IF Shift_Vibration <= Vibration_Limit THEN Maintain_Normal_Operation",
+"IF Shift_Quality_Fault = TRUE THEN Adjust_Shift_Strategy",
+"IF Vibration_Sensor_Fault = TRUE THEN Disable_Vibration_Monitor"
+]
+}
+},
+
+{
+"sample_id":"SQO_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall optimize clutch pressure for smooth shifts.",
+"L3_requirement":"The TCU shall adjust clutch pressure based on shift quality feedback."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Quality_Fault = TRUE THEN Adjust_Clutch_Pressure",
+"IF Shift_Quality_Fault = FALSE THEN Maintain_Current_Pressure",
+"IF Clutch_Pressure > Pressure_Limit THEN Trigger_Pressure_DTC",
+"IF Shift_State = Active THEN Monitor_Clutch_Slip",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Control"
+]
+}
+},
+
+{
+"sample_id":"SQO_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent repeated poor shift quality.",
+"L3_requirement":"The TCU shall detect persistent shift quality issues when fault count exceeds Fault_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Quality_Fault_Count > Fault_Limit THEN Activate_Limp_Mode",
+"IF Shift_Quality_Fault_Count <= Fault_Limit THEN Maintain_Normal_Operation",
+"IF Shift_Quality_Fault_Count > Fault_Limit THEN Trigger_Shift_Quality_DTC",
+"IF Shift_Quality_Fault_Count > Fault_Limit THEN Maintain_Default_Gear",
+"IF Fault_Counter_Error = TRUE THEN Disable_Fault_Count"
+]
+}
+},
+
+{
+"sample_id":"SQO_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall clear shift quality faults after stable operation.",
+"L3_requirement":"The TCU shall clear shift quality fault when vibration and jerk return to normal range."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Jerk < Jerk_Limit AND Shift_Vibration < Vibration_Limit THEN Clear_Shift_Quality_Fault",
+"IF Shift_Quality_Fault = FALSE THEN Resume_Normal_Operation",
+"IF Shift_Jerk >= Jerk_Limit THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF Shift_Quality_Fault = FALSE THEN Restore_Normal_Shifting"
+]
+}
+}
+]

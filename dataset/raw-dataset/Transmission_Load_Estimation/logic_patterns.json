@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF Signal > Threshold THEN Adjust_Load",
+"IF Load > Limit THEN Delay_Shift",
+"IF Load > Safety_Limit THEN Activate_Protection",
+"IF Fault = TRUE THEN Disable_Load_Estimation",
+"IF Timer > Interval THEN Recalculate_Load"
+]
+}

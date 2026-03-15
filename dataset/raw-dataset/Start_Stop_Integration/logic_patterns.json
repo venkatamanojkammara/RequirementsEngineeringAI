@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF Engine_State = Stopped THEN <Action>",
+"IF Engine_Restart_State = Active THEN <Action>",
+"IF <Signal> > <Limit> THEN <Fault_Action>",
+"IF <Fault> = TRUE THEN Activate_Protection",
+"IF <Condition1> AND <Condition2> THEN <Action>"
+]
+}

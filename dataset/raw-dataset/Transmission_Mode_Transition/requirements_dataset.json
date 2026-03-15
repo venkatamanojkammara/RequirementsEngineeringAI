@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"TMT_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall switch to Eco mode when Eco mode request is active.",
+"L3_requirement":"The TCU shall activate Eco shift strategy when Driving_Mode_Request equals Eco."
+},
+"output":{
+"L4_requirements":[
+"IF Driving_Mode_Request = Eco THEN Set_Transmission_Mode = Eco",
+"IF Transmission_Mode = Eco THEN Apply_Eco_Shift_Strategy",
+"IF Driving_Mode_Request != Eco THEN Maintain_Current_Mode",
+"IF Mode_Transition_Fault = TRUE THEN Reject_Mode_Change",
+"IF Transmission_Mode = Eco THEN Log_Mode_Transition_Event"
+]
+}
+},
+
+{
+"sample_id":"TMT_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall switch to Sport mode when Sport mode request is active.",
+"L3_requirement":"The TCU shall activate sport shift strategy when Driving_Mode_Request equals Sport."
+},
+"output":{
+"L4_requirements":[
+"IF Driving_Mode_Request = Sport THEN Set_Transmission_Mode = Sport",
+"IF Transmission_Mode = Sport THEN Apply_Sport_Shift_Strategy",
+"IF Driving_Mode_Request != Sport THEN Maintain_Current_Mode",
+"IF Mode_Transition_Fault = TRUE THEN Reject_Mode_Change",
+"IF Transmission_Mode = Sport THEN Log_Mode_Transition_Event"
+]
+}
+},
+
+{
+"sample_id":"TMT_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall allow manual mode activation.",
+"L3_requirement":"The TCU shall enable manual gear control when Manual_Mode_Request equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Manual_Mode_Request = TRUE THEN Set_Transmission_Mode = Manual",
+"IF Transmission_Mode = Manual THEN Enable_Manual_Shift_Control",
+"IF Manual_Mode_Request = FALSE THEN Disable_Manual_Mode",
+"IF Manual_Mode_Fault = TRUE THEN Reject_Manual_Mode",
+"IF Transmission_Mode = Manual THEN Monitor_Driver_Shift_Request"
+]
+}
+},
+
+{
+"sample_id":"TMT_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent mode change during gear shifting.",
+"L3_requirement":"The TCU shall block mode transition when Shift_State equals Active."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_State = Active THEN Reject_Mode_Change",
+"IF Shift_State = Completed THEN Allow_Mode_Change",
+"IF Mode_Change_Request = TRUE AND Shift_State = Active THEN Maintain_Current_Mode",
+"IF Mode_Transition_Fault = TRUE THEN Trigger_Mode_DTC",
+"IF Shift_State = Active THEN Log_Mode_Request_Event"
+]
+}
+},
+
+{
+"sample_id":"TMT_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall update shift maps when mode changes.",
+"L3_requirement":"The TCU shall load corresponding shift map when driving mode changes."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Mode_Changed = TRUE THEN Load_Shift_Map",
+"IF Shift_Map_Load_Status = Failed THEN Trigger_Map_Load_Fault",
+"IF Shift_Map_Load_Status = Success THEN Enable_Shift_Control",
+"IF Map_Load_Fault = TRUE THEN Maintain_Previous_Mode",
+"IF Transmission_Mode_Changed = TRUE THEN Log_Map_Load_Event"
+]
+}
+},
+
+{
+"sample_id":"TMT_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall validate mode transition conditions.",
+"L3_requirement":"The TCU shall verify vehicle speed before allowing mode transition."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed < Mode_Transition_Speed_Limit THEN Allow_Mode_Change",
+"IF Vehicle_Speed >= Mode_Transition_Speed_Limit THEN Reject_Mode_Change",
+"IF Mode_Change_Request = TRUE THEN Verify_Vehicle_Speed",
+"IF Speed_Sensor_Fault = TRUE THEN Disable_Mode_Transition",
+"IF Mode_Change_Request = TRUE THEN Log_Mode_Validation_Event"
+]
+}
+},
+
+{
+"sample_id":"TMT_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable mode transition during fault condition.",
+"L3_requirement":"The TCU shall block driving mode change when System_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF System_Fault = TRUE THEN Reject_Mode_Change",
+"IF System_Fault = FALSE THEN Allow_Mode_Change",
+"IF System_Fault = TRUE THEN Maintain_Current_Mode",
+"IF System_Fault = TRUE THEN Trigger_System_Fault_DTC",
+"IF System_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"TMT_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall ensure smooth torque control during mode transition.",
+"L3_requirement":"The TCU shall adjust engine torque during driving mode switch."
+},
+"output":{
+"L4_requirements":[
+"IF Mode_Transition = Active THEN Adjust_Engine_Torque",
+"IF Engine_Torque > Mode_Transition_Torque_Limit THEN Reduce_Torque",
+"IF Mode_Transition = Completed THEN Restore_Normal_Torque",
+"IF Torque_Control_Fault = TRUE THEN Trigger_Torque_DTC",
+"IF Mode_Transition = Active THEN Monitor_Torque_Level"
+]
+}
+},
+
+{
+"sample_id":"TMT_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect invalid mode transition.",
+"L3_requirement":"The TCU shall detect fault when requested mode is unsupported."
+},
+"output":{
+"L4_requirements":[
+"IF Requested_Mode NOT_IN Supported_Mode_List THEN Mode_Transition_Fault = TRUE",
+"IF Mode_Transition_Fault = TRUE THEN Trigger_Mode_DTC",
+"IF Requested_Mode IN Supported_Mode_List THEN Continue_Mode_Transition",
+"IF Mode_Transition_Fault = TRUE THEN Maintain_Current_Mode",
+"IF Mode_Transition_Fault = TRUE THEN Log_Mode_Error"
+]
+}
+},
+
+{
+"sample_id":"TMT_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall confirm mode transition completion.",
+"L3_requirement":"The TCU shall set system state when mode transition completes."
+},
+"output":{
+"L4_requirements":[
+"IF Mode_Transition = Completed THEN Update_System_Mode_State",
+"IF Mode_Transition = Completed THEN Enable_Shift_Control",
+"IF Mode_Transition != Completed THEN Maintain_Current_Mode",
+"IF Mode_Transition = Completed THEN Clear_Mode_Request_Flag",
+"IF Mode_Transition = Completed THEN Log_Mode_Completion_Event"
+]
+}
+}
+]

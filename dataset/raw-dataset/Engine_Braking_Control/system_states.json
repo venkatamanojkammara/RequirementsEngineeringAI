@@ -1,0 +1,13 @@
+{
+"system_states":[
+"Normal_Mode",
+"Engine_Braking_Mode",
+"Strong_Braking_Mode",
+"Downhill_Mode",
+"Protection_Mode",
+"Emergency_Mode",
+"Startup",
+"Shutdown",
+"Diagnostic_Mode"
+]
+}

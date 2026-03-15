@@ -1,0 +1,11 @@
+{
+"system_states":[
+"Normal_Operation",
+"Gear_Ratio_Monitoring",
+"Ratio_Fault_Detected",
+"Protection_Mode",
+"Limp_Mode",
+"Diagnostic_Mode",
+"Recovery_Mode"
+]
+}

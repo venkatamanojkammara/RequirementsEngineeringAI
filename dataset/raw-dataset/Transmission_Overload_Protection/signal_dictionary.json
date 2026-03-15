@@ -1,0 +1,12 @@
+{
+"signals":[
+"Transmission_Torque",
+"Input_Shaft_Torque",
+"Overload_Fault",
+"Overload_Duration",
+"Shift_Request",
+"Clutch_Pressure",
+"Fault_Source",
+"Torque_Sensor_Fault"
+]
+}

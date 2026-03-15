@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"TWS_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate warm-up strategy during cold start.",
+"L3_requirement":"The TCU shall enable warm-up mode when Transmission_Oil_Temp is below Warmup_Temp_Threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp < Warmup_Temp_Threshold THEN Warmup_Mode = Enabled",
+"IF Transmission_Oil_Temp >= Warmup_Temp_Threshold THEN Warmup_Mode = Disabled",
+"IF Warmup_Mode = Enabled THEN Apply_Warmup_Shift_Map",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Disable_Warmup_Mode",
+"IF Transmission_Oil_Temp < Critical_Cold_Temp THEN Activate_Cold_Protection"
+]
+}
+},
+
+{
+"sample_id":"TWS_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall delay upshift during warm-up operation.",
+"L3_requirement":"The TCU shall increase upshift RPM when Warmup_Mode equals Enabled."
+},
+"output":{
+"L4_requirements":[
+"IF Warmup_Mode = Enabled THEN Upshift_RPM = Warmup_Upshift_RPM",
+"IF Warmup_Mode = Enabled AND Engine_Speed > Warmup_Upshift_RPM THEN Trigger_Upshift",
+"IF Warmup_Mode = Disabled THEN Use_Default_Shift_Map",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Disable_Warmup_Shifting",
+"IF Warmup_Mode = Enabled THEN Maintain_Lower_Gear"
+]
+}
+},
+
+{
+"sample_id":"TWS_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable aggressive shifting during warm-up.",
+"L3_requirement":"The TCU shall inhibit kickdown when Warmup_Mode equals Enabled."
+},
+"output":{
+"L4_requirements":[
+"IF Warmup_Mode = Enabled THEN Disable_Kickdown",
+"IF Warmup_Mode = Disabled THEN Enable_Kickdown",
+"IF Warmup_Mode = Enabled AND Kickdown_Request = TRUE THEN Reject_Kickdown",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Disable_Warmup_Mode",
+"IF Warmup_Mode = Enabled THEN Apply_Protection_Strategy"
+]
+}
+},
+
+{
+"sample_id":"TWS_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain lower gears during cold start.",
+"L3_requirement":"The TCU shall delay upshift when Transmission_Oil_Temp is below Cold_Temp_Threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp < Cold_Temp_Threshold THEN Maintain_LowGear",
+"IF Transmission_Oil_Temp >= Cold_Temp_Threshold THEN Resume_Normal_Shifting",
+"IF Transmission_Oil_Temp < Cold_Temp_Threshold AND Vehicle_Speed > Min_Warmup_Speed THEN Maintain_LowGear",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Disable_Cold_Start_Strategy",
+"IF Transmission_Oil_Temp < Critical_Cold_Temp THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"TWS_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable warm-up mode once optimal temperature is reached.",
+"L3_requirement":"The TCU shall disable warm-up strategy when Transmission_Oil_Temp exceeds Warmup_Exit_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Warmup_Exit_Temp THEN Warmup_Mode = Disabled",
+"IF Transmission_Oil_Temp <= Warmup_Exit_Temp THEN Warmup_Mode = Enabled",
+"IF Warmup_Mode = Disabled THEN Apply_Normal_Shift_Map",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Disable_Warmup_Mode",
+"IF Transmission_Oil_Temp > Optimal_Temp THEN Maintain_Normal_Operation"
+]
+}
+},
+
+{
+"sample_id":"TWS_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable warm-up strategy only when engine is running.",
+"L3_requirement":"The TCU shall activate warm-up logic when Engine_Running_Status equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Running_Status = TRUE THEN Enable_Warmup_Check",
+"IF Engine_Running_Status = FALSE THEN Disable_Warmup_Mode",
+"IF Engine_Running_Status = TRUE AND Transmission_Oil_Temp < Warmup_Temp_Threshold THEN Warmup_Mode = Enabled",
+"IF Engine_Status_Sensor_Fault = TRUE THEN Disable_Warmup_Mode",
+"IF Engine_Running_Status = TRUE THEN Evaluate_Warmup_Conditions"
+]
+}
+},
+
+{
+"sample_id":"TWS_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall avoid gear hunting during warm-up.",
+"L3_requirement":"The TCU shall stabilize gear selection when Warmup_Mode equals Enabled."
+},
+"output":{
+"L4_requirements":[
+"IF Warmup_Mode = Enabled THEN Prevent_Gear_Hunting",
+"IF Warmup_Mode = Enabled THEN Maintain_Current_Gear",
+"IF Warmup_Mode = Disabled THEN Resume_Normal_Shifting",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Disable_Warmup_Logic",
+"IF Warmup_Mode = Enabled THEN Stabilize_Shift_Strategy"
+]
+}
+},
+
+{
+"sample_id":"TWS_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable warm-up logic only above minimum vehicle speed.",
+"L3_requirement":"The TCU shall activate warm-up shifting when Vehicle_Speed exceeds Warmup_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Warmup_Speed THEN Enable_Warmup_Shifting",
+"IF Vehicle_Speed <= Warmup_Speed THEN Disable_Warmup_Shifting",
+"IF Vehicle_Speed <= Warmup_Speed AND Warmup_Mode = Enabled THEN Maintain_Current_Gear",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Disable_Warmup_Shifting",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_Safety_Warning"
+]
+}
+},
+
+{
+"sample_id":"TWS_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable warm-up strategy during transmission faults.",
+"L3_requirement":"The TCU shall inhibit warm-up logic when Transmission_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Fault = TRUE THEN Disable_Warmup_Mode",
+"IF Transmission_Fault = FALSE THEN Enable_Warmup_Mode",
+"IF Transmission_Fault = TRUE AND Warmup_Mode = Enabled THEN Apply_Normal_Shifting",
+"IF Transmission_Fault = TRUE THEN Activate_Protection_Mode",
+"IF Transmission_Fault = TRUE THEN Trigger_Diagnostic_Code"
+]
+}
+},
+
+{
+"sample_id":"TWS_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adjust shift thresholds during warm-up operation.",
+"L3_requirement":"The TCU shall increase shift thresholds when Warmup_Mode equals Enabled."
+},
+"output":{
+"L4_requirements":[
+"IF Warmup_Mode = Enabled THEN Load_Warmup_Shift_Map",
+"IF Warmup_Mode = Disabled THEN Load_Default_Shift_Map",
+"IF Warmup_Mode = Enabled AND Engine_Speed > Warmup_Upshift_RPM THEN Trigger_Upshift",
+"IF Oil_Temp_Sensor_Fault = TRUE THEN Use_Default_Shift_Map",
+"IF Warmup_Mode = Enabled THEN Apply_Temperature_Based_Shifting"
+]
+}
+}
+]

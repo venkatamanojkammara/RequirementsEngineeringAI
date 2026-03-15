@@ -1,0 +1,11 @@
+{
+"fault_conditions":[
+"Transmission_Fault_Level",
+"Gear_Position_Sensor_Fault",
+"Throttle_Position_Sensor_Fault",
+"Vehicle_Speed_Sensor_Fault",
+"Engine_Control_Module_Fault",
+"CAN_Communication_Fault",
+"TCU_Internal_Fault"
+]
+}

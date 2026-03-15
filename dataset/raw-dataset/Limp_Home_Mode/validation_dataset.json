@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate limp-home mode when critical faults occur.",
+"L3_requirement":"The TCU shall enable limp-home mode when Transmission_Fault_Level equals Critical."
+},
+"expected_output":[
+"IF Transmission_Fault_Level = Critical THEN Limp_Home_Mode = Enabled",
+"IF Transmission_Fault_Level != Critical THEN Limp_Home_Mode = Disabled",
+"IF Limp_Home_Mode = Enabled THEN Apply_Limp_Shift_Map",
+"IF Fault_Signal_Invalid = TRUE THEN Maintain_Normal_Mode"
+]
+}
+]

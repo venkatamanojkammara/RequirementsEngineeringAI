@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF CAN_Message_Timer > Timeout THEN Fault_Action",
+"IF Checksum = Invalid THEN Reject_Message",
+"IF Signal OUTSIDE Range THEN Fault_Action",
+"IF Fault_Count > Limit THEN Activate_Limp_Mode",
+"IF Condition1 AND Condition2 THEN Apply_Fallback"
+]
+}

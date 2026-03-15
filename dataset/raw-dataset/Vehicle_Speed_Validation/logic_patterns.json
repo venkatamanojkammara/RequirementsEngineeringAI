@@ -1,0 +1,10 @@
+{
+"logic_patterns":[
+"IF <Signal> > <Threshold> THEN <Action>",
+"IF <Signal> < <Threshold> THEN <Action>",
+"IF <Signal> BETWEEN <Min> AND <Max> THEN <Action>",
+"IF <Condition1> AND <Condition2> THEN <Action>",
+"IF <Fault> = TRUE THEN Disable_Function",
+"IF <Condition> AND <Request> THEN Reject_Request"
+]
+}

@@ -1,0 +1,13 @@
+{
+"signals":[
+"CAN_Message_Timer",
+"CAN_Checksum_Status",
+"CAN_Message_Delay",
+"CAN_Signal_Value",
+"CAN_Message_Status",
+"CAN_Communication_Error",
+"CAN_Controller_Fault",
+"CAN_Fault_Count",
+"Fault_Node"
+]
+}

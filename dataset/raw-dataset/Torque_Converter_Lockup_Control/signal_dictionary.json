@@ -1,0 +1,17 @@
+{
+"signals":[
+"Engine_Speed",
+"Vehicle_Speed",
+"Throttle_Position",
+"Engine_Load",
+"Engine_Torque",
+"Vehicle_Acceleration",
+"Gear_Position",
+"TCC_Slip",
+"TCC_Command",
+"Shift_Command",
+"Brake_Pedal_Status",
+"Transmission_Oil_Temp",
+"TCU_State"
+]
+}

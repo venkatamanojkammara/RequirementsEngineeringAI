@@ -1,0 +1,46 @@
+[
+    {
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall perform upshift when engine speed exceeds the calibrated threshold.",
+    "L3_requirement":"The TCU shall command upshift when Engine_Speed exceeds Upshift_RPM."
+    },
+    "expected_output":[
+        "IF Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+        "IF Engine_Speed <= Upshift_RPM THEN Maintain_Current_Gear",
+        "IF Gear_Position = Top_Gear THEN Reject_Upshift",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Inhibit_Upshift"
+        ]
+    },
+
+    {
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall allow upshift when vehicle speed exceeds the calibrated speed limit.",
+    "L3_requirement":"The TCU shall permit upshift when Vehicle_Speed exceeds Upshift_Speed."
+    },
+    "expected_output":[
+        "IF Vehicle_Speed > Upshift_Speed THEN Shift_Command = Upshift",
+        "IF Vehicle_Speed <= Upshift_Speed THEN Maintain_Current_Gear",
+        "IF Gear_Position = Top_Gear THEN Reject_Upshift",
+        "IF Vehicle_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Engine_Speed < Min_RPM_For_Upshift THEN Inhibit_Upshift"
+        ]
+    },
+
+    {
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall perform upshift during low throttle cruising conditions.",
+    "L3_requirement":"The TCU shall command upshift when throttle demand is below Throttle_Limit and engine speed exceeds the upshift threshold."
+    },
+    "expected_output":[
+        "IF Engine_Speed > Upshift_RPM AND Throttle_Position < Throttle_Limit THEN Shift_Command = Upshift",
+        "IF Throttle_Position >= Throttle_Limit THEN Maintain_Current_Gear",
+        "IF Engine_Speed <= Upshift_RPM THEN Maintain_Current_Gear",
+        "IF Throttle_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Top_Gear THEN Reject_Upshift"
+        ]
+    }
+]

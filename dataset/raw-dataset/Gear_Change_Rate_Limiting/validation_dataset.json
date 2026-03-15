@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent rapid consecutive gear shifts.",
+"L3_requirement":"The TCU shall enforce minimum time interval between gear shifts."
+},
+"expected_output":[
+"IF Time_Since_Last_Shift < Shift_Rate_Limit THEN Reject_Shift_Request",
+"IF Time_Since_Last_Shift >= Shift_Rate_Limit THEN Allow_Shift_Request",
+"IF Shift_Request_Rejected = TRUE THEN Maintain_Current_Gear",
+"IF Shift_Request_Rejected = TRUE THEN Log_Rate_Limit_Event"
+]
+}
+]

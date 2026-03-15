@@ -1,0 +1,14 @@
+{
+"parameters":[
+"Max_Engage_Speed",
+"Reverse_Safe_Speed",
+"Max_RPM",
+"Throttle_Limit",
+"Pressure_Limit",
+"Max_Temp",
+"Voltage_Limit",
+"Critical_Speed",
+"Critical_RPM",
+"Critical_Voltage"
+]
+}

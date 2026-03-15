@@ -1,0 +1,11 @@
+{
+"system_states":[
+"Normal_Operation",
+"Adaptive_Learning_Mode",
+"Driver_Profile_Update",
+"Protection_Mode",
+"Limp_Mode",
+"Diagnostic_Mode",
+"Recovery_Mode"
+]
+}

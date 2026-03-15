@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"DOL_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall allow driver manual gear override.",
+"L3_requirement":"The TCU shall execute driver gear request when Driver_Shift_Request equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Driver_Shift_Request = TRUE THEN Execute_Driver_Gear_Command",
+"IF Driver_Shift_Request = TRUE THEN Override_Automatic_Shift",
+"IF Driver_Shift_Request = TRUE THEN Verify_Target_Gear",
+"IF Driver_Shift_Request = TRUE THEN Log_Driver_Shift_Event",
+"IF Driver_Shift_Request = TRUE THEN Monitor_Gear_State"
+]
+}
+},
+
+{
+"sample_id":"DOL_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall validate driver shift requests.",
+"L3_requirement":"The TCU shall verify target gear before executing driver override."
+},
+"output":{
+"L4_requirements":[
+"IF Target_Gear IN Valid_Gear_List THEN Allow_Driver_Shift",
+"IF Target_Gear NOT_IN Valid_Gear_List THEN Reject_Driver_Shift",
+"IF Invalid_Gear_Request = TRUE THEN Trigger_Gear_Request_DTC",
+"IF Invalid_Gear_Request = TRUE THEN Maintain_Current_Gear",
+"IF Target_Gear IN Valid_Gear_List THEN Execute_Driver_Shift"
+]
+}
+},
+
+{
+"sample_id":"DOL_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent unsafe driver downshift.",
+"L3_requirement":"The TCU shall reject driver downshift when engine speed exceeds limit."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Speed > Engine_Speed_Limit THEN Reject_Driver_Downshift",
+"IF Engine_Speed <= Engine_Speed_Limit THEN Allow_Driver_Downshift",
+"IF Unsafe_Downshift_Request = TRUE THEN Maintain_Current_Gear",
+"IF Unsafe_Downshift_Request = TRUE THEN Log_Unsafe_Shift_Event",
+"IF Engine_Speed > Engine_Speed_Limit THEN Trigger_Overspeed_Protection"
+]
+}
+},
+
+{
+"sample_id":"DOL_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent driver override during active shift.",
+"L3_requirement":"The TCU shall reject driver shift request when Shift_State equals Active."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_State = Active THEN Reject_Driver_Shift_Request",
+"IF Shift_State = Completed THEN Allow_Driver_Shift_Request",
+"IF Shift_State = Active THEN Maintain_Current_Shift",
+"IF Driver_Shift_Request = TRUE AND Shift_State = Active THEN Log_Shift_Rejection",
+"IF Shift_State = Active THEN Monitor_Shift_Completion"
+]
+}
+},
+
+{
+"sample_id":"DOL_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall exit driver override after timeout.",
+"L3_requirement":"The TCU shall return to automatic shift mode when override timer expires."
+},
+"output":{
+"L4_requirements":[
+"IF Override_Timer > Override_Timeout THEN Disable_Driver_Override",
+"IF Driver_Override_Mode = Disabled THEN Enable_Automatic_Shifting",
+"IF Override_Timer <= Override_Timeout THEN Maintain_Driver_Override",
+"IF Override_Timer > Override_Timeout THEN Log_Override_Exit",
+"IF Driver_Override_Mode = Disabled THEN Resume_Normal_Shift_Control"
+]
+}
+},
+
+{
+"sample_id":"DOL_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prioritize driver override over automatic shift.",
+"L3_requirement":"The TCU shall execute driver shift request before automatic shift logic."
+},
+"output":{
+"L4_requirements":[
+"IF Driver_Shift_Request = TRUE THEN Execute_Driver_Shift",
+"IF Driver_Shift_Request = TRUE THEN Reject_Automatic_Shift",
+"IF Driver_Shift_Request = FALSE THEN Allow_Automatic_Shift",
+"IF Driver_Shift_Request = TRUE THEN Log_Priority_Shift",
+"IF Driver_Shift_Request = TRUE THEN Monitor_Shift_State"
+]
+}
+},
+
+{
+"sample_id":"DOL_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable driver override during fault conditions.",
+"L3_requirement":"The TCU shall block driver override when System_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF System_Fault = TRUE THEN Disable_Driver_Override",
+"IF System_Fault = FALSE THEN Allow_Driver_Override",
+"IF System_Fault = TRUE THEN Maintain_Current_Gear",
+"IF System_Fault = TRUE THEN Trigger_System_Fault_DTC",
+"IF System_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"DOL_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect driver override faults.",
+"L3_requirement":"The TCU shall detect override fault when driver request is inconsistent."
+},
+"output":{
+"L4_requirements":[
+"IF Driver_Request_Inconsistent = TRUE THEN Override_Fault = TRUE",
+"IF Override_Fault = TRUE THEN Reject_Driver_Shift",
+"IF Override_Fault = TRUE THEN Trigger_Override_DTC",
+"IF Override_Fault = TRUE THEN Maintain_Current_Gear",
+"IF Override_Fault = TRUE THEN Log_Override_Error"
+]
+}
+},
+
+{
+"sample_id":"DOL_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall monitor driver override activity.",
+"L3_requirement":"The TCU shall record diagnostic data during driver override operation."
+},
+"output":{
+"L4_requirements":[
+"IF Driver_Override_Mode = Active THEN Store_Override_Diagnostic_Record",
+"IF Driver_Override_Mode = Active THEN Log_Driver_Override_Event",
+"IF Driver_Override_Mode = Active THEN Monitor_Shift_Parameters",
+"IF Diagnostic_System_Fault = TRUE THEN Disable_Event_Logging",
+"IF Driver_Override_Mode = Active THEN Trigger_Override_Status_Log"
+]
+}
+},
+
+{
+"sample_id":"DOL_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall clear override state after shift completion.",
+"L3_requirement":"The TCU shall reset driver override logic after gear change completes."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_State = Completed THEN Reset_Driver_Override_State",
+"IF Override_State = Reset THEN Enable_Automatic_Shifting",
+"IF Shift_State != Completed THEN Maintain_Override_State",
+"IF Override_State = Reset THEN Clear_Request_Flag",
+"IF Override_State = Reset THEN Log_Override_Reset_Event"
+]
+}
+}
+]

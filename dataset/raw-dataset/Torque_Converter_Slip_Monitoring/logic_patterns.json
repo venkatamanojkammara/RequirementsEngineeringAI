@@ -1,0 +1,10 @@
+{
+"logic_patterns":[
+"IF ABS(Signal1 - Signal2) > Threshold THEN Action",
+"IF Signal > Threshold THEN Action",
+"IF Signal BETWEEN Value1 AND Value2 THEN Action",
+"IF Condition1 AND Condition2 THEN Action",
+"IF Fault = TRUE THEN Disable_Function",
+"IF Event_Count > Limit THEN Trigger_Diagnostic"
+]
+}

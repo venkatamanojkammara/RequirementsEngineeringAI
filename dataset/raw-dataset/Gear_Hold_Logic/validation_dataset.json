@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall hold the current gear during uphill driving.",
+"L3_requirement":"The TCU shall prevent upshift when Hill_Gradient exceeds threshold."
+},
+"expected_output":[
+"IF Hill_Gradient > Hill_Hold_Threshold THEN Enable_Gear_Hold",
+"IF Gear_Hold_Mode = Active THEN Maintain_Current_Gear",
+"IF Hill_Gradient <= Hill_Hold_Threshold THEN Disable_Gear_Hold",
+"IF Gear_Hold_Mode = Active THEN Monitor_Vehicle_Load"
+]
+}
+]

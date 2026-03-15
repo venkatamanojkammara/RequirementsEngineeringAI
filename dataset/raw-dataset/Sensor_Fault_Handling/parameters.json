@@ -1,0 +1,10 @@
+{
+"parameters":[
+"Min_Limit",
+"Max_Limit",
+"Critical_Sensor_Level",
+"Timeout_Limit",
+"Default_Pressure",
+"Default_Temperature"
+]
+}

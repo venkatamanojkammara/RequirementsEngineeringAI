@@ -1,0 +1,16 @@
+{
+"signals":[
+"Engine_Running_Status",
+"Brake_Pedal_Status",
+"Vehicle_Speed",
+"Engine_Speed",
+"Gear_Position",
+"Shift_Request",
+"Shift_Actuator_Status",
+"Transmission_Oil_Temp",
+"Battery_Voltage",
+"Diagnostic_Mode",
+"Fault_Status",
+"TCU_State"
+]
+}

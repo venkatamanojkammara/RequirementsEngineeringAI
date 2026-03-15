@@ -1,0 +1,9 @@
+{
+"fault_conditions":[
+"Gear_Position_Mismatch",
+"Gear_Position_Sensor_Fault",
+"Gear_Ratio_Fault",
+"Gear_Engagement_Timing_Fault",
+"Gear_Disengagement_Fault"
+]
+}

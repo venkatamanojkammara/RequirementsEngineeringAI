@@ -1,0 +1,10 @@
+{
+"fault_conditions":[
+"Throttle_Position_Sensor_Fault",
+"Throttle_Signal_Error",
+"Throttle_Signal_Invalid",
+"CAN_Communication_Fault",
+"TCU_Internal_Fault",
+"Engine_Control_Module_Fault"
+]
+}

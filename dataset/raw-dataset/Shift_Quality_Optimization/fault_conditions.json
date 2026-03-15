@@ -1,0 +1,10 @@
+{
+"fault_conditions":[
+"Harsh_Shift_Fault",
+"Shift_Quality_Fault",
+"Clutch_Pressure_Fault",
+"Torque_Control_Fault",
+"Jerk_Sensor_Fault",
+"Vibration_Sensor_Fault"
+]
+}

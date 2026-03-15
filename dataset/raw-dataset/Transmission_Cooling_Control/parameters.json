@@ -1,0 +1,10 @@
+{
+"parameters":[
+"Cooling_Threshold",
+"High_Temp_Limit",
+"Critical_Temp",
+"Extreme_Temp",
+"Shutdown_Temp",
+"Rate_Limit"
+]
+}

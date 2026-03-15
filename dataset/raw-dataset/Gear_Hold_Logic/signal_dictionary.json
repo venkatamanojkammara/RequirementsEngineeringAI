@@ -1,0 +1,13 @@
+{
+"signals":[
+"Hill_Gradient",
+"Downhill_Gradient",
+"Throttle_Position",
+"Transmission_Mode",
+"Vehicle_Speed",
+"Engine_Speed",
+"Gear_Hold_Mode",
+"System_Fault",
+"Gear_Position"
+]
+}

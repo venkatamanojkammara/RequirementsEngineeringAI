@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"AFH_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect shift actuator failures.",
+"L3_requirement":"The TCU shall detect fault when Shift_Actuator_Status equals Fault."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Actuator_Status = Fault THEN Actuator_Fault = TRUE",
+"IF Actuator_Fault = TRUE THEN Trigger_Shift_Actuator_DTC",
+"IF Actuator_Fault = TRUE THEN Disable_Shift_Command",
+"IF Shift_Actuator_Status = Operational THEN Clear_Fault_Status",
+"IF Actuator_Fault = TRUE THEN Activate_Limp_Mode"
+]
+}
+},
+
+{
+"sample_id":"AFH_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect clutch actuator faults.",
+"L3_requirement":"The TCU shall detect fault when Clutch_Actuator_Status equals Fault."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Actuator_Status = Fault THEN Actuator_Fault = TRUE",
+"IF Actuator_Fault = TRUE THEN Trigger_Clutch_Actuator_DTC",
+"IF Actuator_Fault = TRUE THEN Disable_Clutch_Control",
+"IF Clutch_Actuator_Status = Operational THEN Resume_Normal_Control",
+"IF Actuator_Fault = TRUE THEN Maintain_Safe_Gear"
+]
+}
+},
+
+{
+"sample_id":"AFH_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate limp-home mode during actuator failure.",
+"L3_requirement":"The TCU shall enable limp-home mode when Actuator_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Actuator_Fault = TRUE THEN Limp_Home_Mode = Enabled",
+"IF Limp_Home_Mode = Enabled THEN Maintain_Predefined_Gear",
+"IF Limp_Home_Mode = Enabled THEN Disable_Shift_Commands",
+"IF Actuator_Fault = FALSE THEN Resume_Normal_Operation",
+"IF Actuator_Fault = TRUE THEN Log_Diagnostic_Event"
+]
+}
+},
+
+{
+"sample_id":"AFH_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect actuator position mismatch.",
+"L3_requirement":"The TCU shall detect fault when Actual_Actuator_Position deviates from Commanded_Position."
+},
+"output":{
+"L4_requirements":[
+"IF Actual_Actuator_Position != Commanded_Position THEN Actuator_Fault = TRUE",
+"IF Actuator_Fault = TRUE THEN Trigger_Position_Error_DTC",
+"IF Actual_Actuator_Position = Commanded_Position THEN Maintain_Normal_Control",
+"IF Position_Error > Position_Threshold THEN Activate_Limp_Mode",
+"IF Position_Sensor_Fault = TRUE THEN Disable_Position_Monitoring"
+]
+}
+},
+
+{
+"sample_id":"AFH_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable shifting when actuator faults occur.",
+"L3_requirement":"The TCU shall inhibit shift commands when Actuator_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Actuator_Fault = TRUE THEN Disable_Shift_Command",
+"IF Actuator_Fault = FALSE THEN Enable_Shift_Command",
+"IF Actuator_Fault = TRUE AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Actuator_Fault = TRUE THEN Maintain_Current_Gear",
+"IF Actuator_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"AFH_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect actuator response delays.",
+"L3_requirement":"The TCU shall detect fault when actuator response time exceeds Response_Threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Actuator_Response_Time > Response_Threshold THEN Actuator_Fault = TRUE",
+"IF Actuator_Response_Time <= Response_Threshold THEN Maintain_Normal_Control",
+"IF Actuator_Fault = TRUE THEN Trigger_Response_Error_DTC",
+"IF Actuator_Fault = TRUE THEN Disable_Shift_Control",
+"IF Actuator_Response_Time > Critical_Response_Time THEN Activate_Limp_Mode"
+]
+}
+},
+
+{
+"sample_id":"AFH_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect hydraulic actuator pressure failures.",
+"L3_requirement":"The TCU shall detect fault when Hydraulic_Pressure falls below Pressure_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Hydraulic_Pressure < Pressure_Limit THEN Actuator_Fault = TRUE",
+"IF Actuator_Fault = TRUE THEN Trigger_Hydraulic_Actuator_DTC",
+"IF Hydraulic_Pressure >= Pressure_Limit THEN Maintain_Normal_Operation",
+"IF Hydraulic_Pressure < Critical_Pressure THEN Activate_Limp_Mode",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Monitoring"
+]
+}
+},
+
+{
+"sample_id":"AFH_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall isolate faulty actuators.",
+"L3_requirement":"The TCU shall identify faulty actuator when Fault_Code equals Actuator_Fault."
+},
+"output":{
+"L4_requirements":[
+"IF Fault_Code = Actuator_Fault THEN Identify_Faulty_Actuator",
+"IF Faulty_Actuator = Shift_Actuator THEN Disable_Shift_Control",
+"IF Faulty_Actuator = Clutch_Actuator THEN Disable_Clutch_Control",
+"IF Fault_Code = Actuator_Fault THEN Log_Diagnostic_Data",
+"IF Fault_Code = Actuator_Fault THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"AFH_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent repeated actuator failures.",
+"L3_requirement":"The TCU shall disable actuator commands when repeated faults are detected."
+},
+"output":{
+"L4_requirements":[
+"IF Actuator_Fault_Count > Fault_Limit THEN Disable_Actuator_Command",
+"IF Actuator_Fault_Count <= Fault_Limit THEN Allow_Actuator_Command",
+"IF Actuator_Fault_Count > Fault_Limit THEN Trigger_Repeated_Fault_DTC",
+"IF Actuator_Fault_Count > Fault_Limit THEN Activate_Limp_Mode",
+"IF Actuator_Fault_Count > Fault_Limit THEN Log_Fault_Event"
+]
+}
+},
+
+{
+"sample_id":"AFH_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall restore normal actuator control when faults are cleared.",
+"L3_requirement":"The TCU shall clear actuator fault status when Actuator_Status equals Operational."
+},
+"output":{
+"L4_requirements":[
+"IF Actuator_Status = Operational THEN Clear_Actuator_Fault",
+"IF Actuator_Fault = FALSE THEN Enable_Shift_Command",
+"IF Actuator_Status = Fault THEN Maintain_Fault_State",
+"IF Actuator_Status = Operational THEN Clear_Diagnostic_Code",
+"IF Actuator_Status = Operational THEN Resume_Normal_Operation"
+]
+}
+}
+]

@@ -1,0 +1,13 @@
+{
+"signals":[
+"Engine_Torque",
+"Vehicle_Speed",
+"Throttle_Position",
+"Vehicle_Acceleration",
+"Gear_Ratio",
+"Estimated_Load",
+"Load_Update_Timer",
+"System_Fault",
+"Load_Estimation_Active"
+]
+}

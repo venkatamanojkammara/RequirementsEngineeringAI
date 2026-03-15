@@ -1,0 +1,15 @@
+{
+  "parameters":[
+    "Upshift_RPM",
+    "Downshift_RPM",
+    "Cruise_Min_RPM",
+    "Cruise_Max_RPM",
+    "Min_Shift_Speed",
+    "Downshift_Speed",
+    "Upshift_Speed",
+    "Throttle_Limit",
+    "Load_Limit",
+    "Low_Load_Limit",
+    "Max_RPM"
+  ]
+}

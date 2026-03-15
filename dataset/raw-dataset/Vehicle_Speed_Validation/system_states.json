@@ -1,0 +1,12 @@
+{
+"system_states":[
+"Normal_Operation",
+"Cruise_Mode",
+"Low_Speed_Mode",
+"High_Speed_Mode",
+"Startup",
+"Shutdown",
+"Diagnostic_Mode",
+"Limp_Mode"
+]
+}

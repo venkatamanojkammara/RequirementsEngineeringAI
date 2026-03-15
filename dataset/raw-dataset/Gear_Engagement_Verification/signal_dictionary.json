@@ -1,0 +1,13 @@
+{
+"signals":[
+"Commanded_Gear",
+"Actual_Gear",
+"Calculated_Gear_Ratio",
+"Input_Shaft_Speed",
+"Output_Shaft_Speed",
+"Gear_Position_Sensor",
+"Clutch_State",
+"Gear_Engagement_Timer",
+"System_Fault"
+]
+}

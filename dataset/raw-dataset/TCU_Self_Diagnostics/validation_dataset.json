@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission controller shall monitor internal RAM integrity.",
+"L3_requirement":"The TCU shall detect RAM error when memory checksum verification fails."
+},
+"expected_output":[
+"IF RAM_Checksum_Status = Invalid THEN RAM_Error_Fault = TRUE",
+"IF RAM_Error_Fault = TRUE THEN Trigger_RAM_DTC",
+"IF RAM_Checksum_Status = Valid THEN Maintain_Normal_Operation",
+"IF RAM_Error_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+]

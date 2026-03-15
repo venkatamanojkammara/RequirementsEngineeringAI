@@ -1,0 +1,9 @@
+{
+"parameters":[
+"CPU_Load_Limit",
+"Task_Deadline",
+"Stack_Limit",
+"ECU_Temp_Limit",
+"Default_Gear"
+]
+}

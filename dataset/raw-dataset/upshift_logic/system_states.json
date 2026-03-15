@@ -1,0 +1,16 @@
+{
+  "system_states": [
+    "Park",
+    "Reverse",
+    "Neutral",
+    "Drive",
+    "Manual_Mode",
+    "Sport_Mode",
+    "Eco_Mode",
+    "Cruise",
+    "Acceleration",
+    "Deceleration",
+    "Startup",
+    "Shutdown"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+"system_states":[
+"Normal_Operation",
+"CAN_Communication_Active",
+"CAN_Fault_Detected",
+"Fallback_Mode",
+"Protection_Mode",
+"Limp_Mode",
+"Diagnostic_Mode"
+]
+}

@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"CCM_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect missing CAN messages.",
+"L3_requirement":"The TCU shall detect communication fault when expected CAN message is not received within timeout."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Message_Timer > Message_Timeout_Limit THEN CAN_Message_Missing_Fault = TRUE",
+"IF CAN_Message_Missing_Fault = TRUE THEN Trigger_CAN_Communication_DTC",
+"IF CAN_Message_Timer <= Message_Timeout_Limit THEN Maintain_Normal_Operation",
+"IF CAN_Message_Missing_Fault = TRUE THEN Log_Diagnostic_Data",
+"IF CAN_Controller_Fault = TRUE THEN Disable_CAN_Monitor"
+]
+}
+},
+
+{
+"sample_id":"CCM_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect corrupted CAN messages.",
+"L3_requirement":"The TCU shall detect fault when CAN message checksum validation fails."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Checksum_Status = Invalid THEN CAN_Message_Corruption_Fault = TRUE",
+"IF CAN_Message_Corruption_Fault = TRUE THEN Trigger_CAN_Checksum_DTC",
+"IF CAN_Checksum_Status = Valid THEN Maintain_Normal_Operation",
+"IF CAN_Message_Corruption_Fault = TRUE THEN Reject_CAN_Data",
+"IF CAN_Controller_Fault = TRUE THEN Disable_Message_Processing"
+]
+}
+},
+
+{
+"sample_id":"CCM_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall use fallback values when CAN data is missing.",
+"L3_requirement":"The TCU shall apply default parameter when CAN message timeout occurs."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Message_Missing_Fault = TRUE THEN Apply_Default_Parameter",
+"IF CAN_Message_Missing_Fault = FALSE THEN Use_Received_CAN_Data",
+"IF CAN_Message_Missing_Fault = TRUE THEN Log_Fallback_Usage",
+"IF Default_Parameter_Invalid = TRUE THEN Trigger_Data_Fault",
+"IF CAN_Message_Missing_Fault = TRUE THEN Monitor_System_State"
+]
+}
+},
+
+{
+"sample_id":"CCM_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable dependent functions when CAN fault occurs.",
+"L3_requirement":"The TCU shall disable adaptive shift feature when engine torque message is missing."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Torque_CAN_Message_Missing = TRUE THEN Disable_Adaptive_Shift_Learning",
+"IF Engine_Torque_CAN_Message_Missing = FALSE THEN Enable_Adaptive_Shift_Learning",
+"IF CAN_Message_Missing_Fault = TRUE THEN Monitor_Fallback_Mode",
+"IF CAN_Controller_Fault = TRUE THEN Disable_CAN_Functions",
+"IF Engine_Torque_CAN_Message_Missing = TRUE THEN Log_CAN_Event"
+]
+}
+},
+
+{
+"sample_id":"CCM_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect delayed CAN messages.",
+"L3_requirement":"The TCU shall detect fault when message arrival delay exceeds configured limit."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Message_Delay > Delay_Limit THEN CAN_Message_Delay_Fault = TRUE",
+"IF CAN_Message_Delay_Fault = TRUE THEN Trigger_CAN_Delay_DTC",
+"IF CAN_Message_Delay <= Delay_Limit THEN Maintain_Normal_Operation",
+"IF CAN_Message_Delay_Fault = TRUE THEN Monitor_CAN_Network",
+"IF CAN_Controller_Fault = TRUE THEN Disable_CAN_Monitor"
+]
+}
+},
+
+{
+"sample_id":"CCM_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect invalid CAN signal values.",
+"L3_requirement":"The TCU shall detect fault when received CAN signal value is outside valid range."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Signal_Value OUTSIDE Valid_Range THEN CAN_Data_Invalid_Fault = TRUE",
+"IF CAN_Data_Invalid_Fault = TRUE THEN Trigger_Invalid_Data_DTC",
+"IF CAN_Signal_Value WITHIN Valid_Range THEN Maintain_Normal_Operation",
+"IF CAN_Data_Invalid_Fault = TRUE THEN Reject_Invalid_Data",
+"IF CAN_Controller_Fault = TRUE THEN Disable_Data_Monitor"
+]
+}
+},
+
+{
+"sample_id":"CCM_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enter safe mode when CAN communication fails.",
+"L3_requirement":"The TCU shall activate limp mode when multiple CAN communication faults occur."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Fault_Count > CAN_Fault_Limit THEN Activate_Limp_Mode",
+"IF CAN_Fault_Count <= CAN_Fault_Limit THEN Maintain_Normal_Operation",
+"IF CAN_Fault_Count > CAN_Fault_Limit THEN Trigger_CAN_Fault_DTC",
+"IF CAN_Fault_Count > CAN_Fault_Limit THEN Maintain_Default_Gear",
+"IF Fault_Counter_Error = TRUE THEN Disable_Fault_Count"
+]
+}
+},
+
+{
+"sample_id":"CCM_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall isolate CAN communication faults.",
+"L3_requirement":"The TCU shall identify faulty node when communication errors occur."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Communication_Error = TRUE THEN Identify_Faulty_Node",
+"IF Fault_Node = Engine_ECU THEN Trigger_Engine_CAN_DTC",
+"IF Fault_Node = Brake_Module THEN Trigger_Brake_CAN_DTC",
+"IF Fault_Node = BCM THEN Trigger_BCM_CAN_DTC",
+"IF CAN_Communication_Error = TRUE THEN Log_Diagnostic_Data"
+]
+}
+},
+
+{
+"sample_id":"CCM_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe gear during CAN faults.",
+"L3_requirement":"The TCU shall maintain predefined gear when CAN_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Fault = TRUE THEN Maintain_Default_Gear",
+"IF CAN_Fault = TRUE THEN Disable_Shift_Request",
+"IF CAN_Fault = FALSE THEN Resume_Normal_Shifting",
+"IF CAN_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF CAN_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"CCM_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall clear CAN faults after communication recovery.",
+"L3_requirement":"The TCU shall clear CAN fault when valid CAN messages are received again."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Message_Status = Valid THEN Clear_CAN_Fault",
+"IF CAN_Fault = FALSE THEN Resume_Normal_Operation",
+"IF CAN_Message_Status != Valid THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF CAN_Fault = FALSE THEN Restore_CAN_Function"
+]
+}
+}
+]

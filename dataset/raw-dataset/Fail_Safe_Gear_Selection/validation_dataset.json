@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall select a safe gear when a critical system fault occurs.",
+"L3_requirement":"The TCU shall shift to predefined fail-safe gear when Critical_System_Fault equals TRUE."
+},
+"expected_output":[
+"IF Critical_System_Fault = TRUE THEN Select_Fail_Safe_Gear",
+"IF Fail_Safe_Gear_Selected = TRUE THEN Disable_Normal_Shift_Control",
+"IF Critical_System_Fault = TRUE THEN Trigger_FailSafe_DTC",
+"IF Fail_Safe_Mode = Active THEN Limit_Engine_Torque"
+]
+}
+]

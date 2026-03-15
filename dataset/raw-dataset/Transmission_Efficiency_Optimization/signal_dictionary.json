@@ -1,0 +1,13 @@
+{
+"signals":[
+"Throttle_Position",
+"Engine_Speed",
+"Vehicle_Speed",
+"Engine_Torque",
+"Estimated_Load",
+"Driving_Mode",
+"Efficiency_Mode",
+"Efficiency_Timer",
+"Eco_Shift_Map_Loaded"
+]
+}

@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"CPC_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall control clutch hydraulic pressure during engagement.",
+"L3_requirement":"The TCU shall increase clutch pressure when clutch engagement command is issued."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Command = Engage THEN Increase_Clutch_Pressure",
+"IF Clutch_Command = Disengage THEN Decrease_Clutch_Pressure",
+"IF Clutch_Pressure >= Target_Pressure THEN Maintain_Current_Pressure",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Control",
+"IF Clutch_Command = Engage THEN Monitor_Pressure_Ramp"
+]
+}
+},
+
+{
+"sample_id":"CPC_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall regulate clutch pressure to prevent slip.",
+"L3_requirement":"The TCU shall increase pressure when Clutch_Slip exceeds Slip_Threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Slip > Slip_Threshold THEN Increase_Clutch_Pressure",
+"IF Clutch_Slip <= Slip_Threshold THEN Maintain_Current_Pressure",
+"IF Clutch_Slip > Critical_Slip THEN Trigger_Slip_DTC",
+"IF Clutch_Slip > Critical_Slip THEN Activate_Protection_Mode",
+"IF Slip_Sensor_Fault = TRUE THEN Disable_Slip_Monitoring"
+]
+}
+},
+
+{
+"sample_id":"CPC_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall reduce clutch pressure during disengagement.",
+"L3_requirement":"The TCU shall decrease pressure when clutch disengagement command is issued."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Command = Disengage THEN Decrease_Clutch_Pressure",
+"IF Clutch_Pressure <= Minimum_Pressure THEN Stop_Pressure_Decrease",
+"IF Clutch_Command = Engage THEN Resume_Pressure_Control",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Clutch_Control",
+"IF Clutch_Command = Disengage THEN Monitor_Disengagement"
+]
+}
+},
+
+{
+"sample_id":"CPC_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall monitor clutch pressure levels.",
+"L3_requirement":"The TCU shall detect fault when Clutch_Pressure exceeds Pressure_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Pressure > Pressure_Limit THEN Pressure_Fault = TRUE",
+"IF Pressure_Fault = TRUE THEN Trigger_Pressure_DTC",
+"IF Clutch_Pressure <= Pressure_Limit THEN Maintain_Normal_Operation",
+"IF Clutch_Pressure > Critical_Pressure THEN Activate_Limp_Mode",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Monitor"
+]
+}
+},
+
+{
+"sample_id":"CPC_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall control pressure ramp rate during clutch engagement.",
+"L3_requirement":"The TCU shall increase pressure gradually according to Ramp_Rate."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Command = Engage THEN Increase_Pressure_By_Ramp_Rate",
+"IF Clutch_Pressure >= Target_Pressure THEN Stop_Pressure_Ramp",
+"IF Ramp_Rate > Max_Ramp_Rate THEN Trigger_Ramp_Error",
+"IF Ramp_Control_Fault = TRUE THEN Disable_Ramp_Control",
+"IF Clutch_Command = Engage THEN Monitor_Ramp_Profile"
+]
+}
+},
+
+{
+"sample_id":"CPC_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain clutch pressure during steady operation.",
+"L3_requirement":"The TCU shall maintain pressure when clutch engagement is complete."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Engaged = TRUE THEN Maintain_Target_Pressure",
+"IF Clutch_Engaged = FALSE THEN Adjust_Pressure",
+"IF Clutch_Pressure < Minimum_Pressure THEN Increase_Clutch_Pressure",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Control",
+"IF Clutch_Engaged = TRUE THEN Monitor_Pressure_Stability"
+]
+}
+},
+
+{
+"sample_id":"CPC_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect insufficient clutch pressure.",
+"L3_requirement":"The TCU shall detect fault when Clutch_Pressure falls below Minimum_Pressure."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Pressure < Minimum_Pressure THEN Pressure_Fault = TRUE",
+"IF Pressure_Fault = TRUE THEN Trigger_Low_Pressure_DTC",
+"IF Clutch_Pressure >= Minimum_Pressure THEN Maintain_Normal_Operation",
+"IF Clutch_Pressure < Critical_Pressure THEN Activate_Limp_Mode",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Monitor"
+]
+}
+},
+
+{
+"sample_id":"CPC_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall isolate pressure control faults.",
+"L3_requirement":"The TCU shall identify fault source when Pressure_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Pressure_Fault = TRUE THEN Identify_Fault_Source",
+"IF Fault_Source = Pressure_Sensor THEN Disable_Sensor_Input",
+"IF Fault_Source = Hydraulic_System THEN Disable_Clutch_Control",
+"IF Pressure_Fault = TRUE THEN Log_Diagnostic_Data",
+"IF Pressure_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"CPC_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe pressure during faults.",
+"L3_requirement":"The TCU shall apply default pressure when Pressure_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Pressure_Fault = TRUE THEN Apply_Default_Pressure",
+"IF Pressure_Fault = TRUE THEN Disable_Pressure_Adjustment",
+"IF Pressure_Fault = FALSE THEN Resume_Normal_Control",
+"IF Pressure_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF Pressure_Fault = TRUE THEN Activate_Limp_Mode"
+]
+}
+},
+
+{
+"sample_id":"CPC_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall clear pressure faults after recovery.",
+"L3_requirement":"The TCU shall clear pressure fault when Clutch_Pressure returns to normal range."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Pressure BETWEEN Minimum_Pressure AND Pressure_Limit THEN Clear_Pressure_Fault",
+"IF Pressure_Fault = FALSE THEN Resume_Normal_Operation",
+"IF Clutch_Pressure OUTSIDE Normal_Range THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF Pressure_Fault = FALSE THEN Restore_Normal_Control"
+]
+}
+}
+]

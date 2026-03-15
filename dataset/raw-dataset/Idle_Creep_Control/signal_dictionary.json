@@ -1,0 +1,12 @@
+{
+"signals":[
+"Gear_Position",
+"Brake_Pedal",
+"Vehicle_Speed",
+"Creep_Mode",
+"Creep_Torque_Active",
+"Engine_State",
+"Transmission_Fault",
+"Creep_Fault"
+]
+}

@@ -1,0 +1,10 @@
+{
+"system_states":[
+"Normal_Operation",
+"Low_Voltage_Mode",
+"Protection_Mode",
+"Limp_Mode",
+"Diagnostic_Mode",
+"Recovery_Mode"
+]
+}

@@ -1,0 +1,10 @@
+{
+"logic_patterns":[
+"IF <Signal> > <Threshold> THEN <Action>",
+"IF <Signal> <= <Threshold> THEN <Action>",
+"IF <Signal> > <Threshold> THEN Activate_Warning",
+"IF <Signal> > <Critical_Threshold> THEN Enable_Protection",
+"IF <Fault> = TRUE THEN Enable_FailSafe",
+"IF <Condition1> AND <Condition2> THEN <Action>"
+]
+}

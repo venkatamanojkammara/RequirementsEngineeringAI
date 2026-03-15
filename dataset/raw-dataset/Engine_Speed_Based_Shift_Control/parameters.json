@@ -1,0 +1,16 @@
+{
+"parameters":[
+"Upshift_RPM",
+"Downshift_RPM",
+"Min_Upshift_RPM",
+"Max_Downshift_RPM",
+"Optimal_RPM_Min",
+"Optimal_RPM_Max",
+"Cruise_RPM_Min",
+"Cruise_RPM_Max",
+"Idle_RPM",
+"Critical_RPM",
+"Emergency_RPM",
+"RPM_Variance"
+]
+}

@@ -1,0 +1,13 @@
+{
+"signals":[
+"Throttle_Position",
+"Throttle_Rate",
+"Engine_RPM",
+"Driving_Style",
+"Driver_Profile",
+"Driving_Event_Recorded",
+"Driving_Profile_Change",
+"Adaptive_Shift_Adjustment",
+"Adaptive_Fault"
+]
+}

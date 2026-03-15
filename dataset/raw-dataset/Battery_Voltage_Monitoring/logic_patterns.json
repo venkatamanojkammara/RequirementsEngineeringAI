@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF <Signal> < <Limit> THEN <Protection_Action>",
+"IF <Signal> >= <Limit> THEN <Normal_Action>",
+"IF <Fault> = TRUE THEN Activate_Protection",
+"IF <Signal> OUTSIDE <Range> THEN <Fault_Action>",
+"IF <Condition1> AND <Condition2> THEN <Action>"
+]
+}

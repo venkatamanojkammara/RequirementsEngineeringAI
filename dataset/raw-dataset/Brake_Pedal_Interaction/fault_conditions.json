@@ -1,0 +1,8 @@
+{
+"fault_conditions":[
+"Brake_Sensor_Fault",
+"Brake_Signal_Error",
+"Brake_Interaction_Fault",
+"Shift_Control_Fault"
+]
+}

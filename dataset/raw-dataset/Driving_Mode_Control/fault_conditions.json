@@ -1,0 +1,12 @@
+{
+"fault_conditions":[
+"Mode_Signal_Fault",
+"Driving_Mode_Signal_Invalid",
+"Throttle_Position_Sensor_Fault",
+"Vehicle_Speed_Sensor_Fault",
+"Engine_Speed_Sensor_Fault",
+"CAN_Communication_Fault",
+"Transmission_Fault",
+"TCU_Internal_Fault"
+]
+}

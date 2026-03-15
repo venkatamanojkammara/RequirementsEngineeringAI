@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"ASL_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adapt shift strategy based on driver behavior.",
+"L3_requirement":"The TCU shall classify driving style using throttle and acceleration patterns."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Position > Aggressive_Throttle_Limit THEN Driving_Style = Aggressive",
+"IF Throttle_Position <= Aggressive_Throttle_Limit THEN Driving_Style = Normal",
+"IF Driving_Style = Aggressive THEN Apply_Aggressive_Shift_Map",
+"IF Driving_Style = Normal THEN Apply_Normal_Shift_Map",
+"IF Throttle_Sensor_Fault = TRUE THEN Disable_Driving_Style_Classification"
+]
+}
+},
+
+{
+"sample_id":"ASL_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adjust upshift points based on driving style.",
+"L3_requirement":"The TCU shall delay upshift when driving style is aggressive."
+},
+"output":{
+"L4_requirements":[
+"IF Driving_Style = Aggressive THEN Upshift_RPM = Aggressive_Upshift_RPM",
+"IF Driving_Style = Normal THEN Upshift_RPM = Normal_Upshift_RPM",
+"IF Engine_RPM > Upshift_RPM THEN Trigger_Upshift",
+"IF Driving_Style = Aggressive THEN Monitor_Acceleration_Profile",
+"IF RPM_Sensor_Fault = TRUE THEN Use_Default_Shift_Map"
+]
+}
+},
+
+{
+"sample_id":"ASL_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable earlier upshifts for economical driving.",
+"L3_requirement":"The TCU shall classify economical driving when throttle usage remains low."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Position < Eco_Throttle_Limit THEN Driving_Style = Economical",
+"IF Driving_Style = Economical THEN Apply_Eco_Shift_Map",
+"IF Driving_Style = Economical THEN Reduce_Upshift_RPM",
+"IF Driving_Style = Economical THEN Monitor_Fuel_Efficiency",
+"IF Throttle_Sensor_Fault = TRUE THEN Disable_Eco_Mode"
+]
+}
+},
+
+{
+"sample_id":"ASL_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adjust downshift strategy based on driver demand.",
+"L3_requirement":"The TCU shall trigger earlier downshift when throttle demand increases rapidly."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Rate > Throttle_Rate_Limit THEN Trigger_Downshift",
+"IF Throttle_Rate <= Throttle_Rate_Limit THEN Maintain_Current_Gear",
+"IF Driving_Style = Aggressive THEN Lower_Downshift_Speed",
+"IF Throttle_Rate > Critical_Rate THEN Log_Driving_Event",
+"IF Throttle_Sensor_Fault = TRUE THEN Disable_Rate_Monitor"
+]
+}
+},
+
+{
+"sample_id":"ASL_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall learn driver behavior over time.",
+"L3_requirement":"The TCU shall update driver profile using historical driving data."
+},
+"output":{
+"L4_requirements":[
+"IF Driving_Event_Recorded = TRUE THEN Update_Driver_Profile",
+"IF Driver_Profile = Aggressive THEN Apply_Aggressive_Shift_Map",
+"IF Driver_Profile = Economical THEN Apply_Eco_Shift_Map",
+"IF Learning_Error = TRUE THEN Reset_Driver_Profile",
+"IF Learning_System_Fault = TRUE THEN Disable_Adaptive_Learning"
+]
+}
+},
+
+{
+"sample_id":"ASL_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall adapt clutch engagement for smooth driving.",
+"L3_requirement":"The TCU shall adjust clutch pressure ramp based on learned driving profile."
+},
+"output":{
+"L4_requirements":[
+"IF Driver_Profile = Aggressive THEN Increase_Clutch_Pressure_Ramp",
+"IF Driver_Profile = Economical THEN Reduce_Clutch_Pressure_Ramp",
+"IF Clutch_Pressure > Pressure_Limit THEN Trigger_Pressure_DTC",
+"IF Clutch_State = Engaged THEN Stop_Ramp_Control",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Ramp_Control"
+]
+}
+},
+
+{
+"sample_id":"ASL_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect inconsistent driving patterns.",
+"L3_requirement":"The TCU shall reset adaptive learning when driver behavior changes drastically."
+},
+"output":{
+"L4_requirements":[
+"IF Driving_Profile_Change = TRUE THEN Reset_Adaptive_Profile",
+"IF Adaptive_Profile_Reset = TRUE THEN Apply_Default_Shift_Map",
+"IF Driving_Profile_Change = TRUE THEN Log_Diagnostic_Event",
+"IF Learning_System_Fault = TRUE THEN Disable_Adaptive_Learning",
+"IF Adaptive_Profile_Reset = TRUE THEN Monitor_New_Driving_Data"
+]
+}
+},
+
+{
+"sample_id":"ASL_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent unsafe adaptive behavior.",
+"L3_requirement":"The TCU shall limit adaptive adjustments within predefined safety limits."
+},
+"output":{
+"L4_requirements":[
+"IF Adaptive_Shift_Adjustment > Adjustment_Limit THEN Limit_Adjustment",
+"IF Adaptive_Shift_Adjustment <= Adjustment_Limit THEN Allow_Adjustment",
+"IF Adjustment_Limit_Exceeded = TRUE THEN Trigger_Adjustment_DTC",
+"IF Adjustment_Limit_Exceeded = TRUE THEN Apply_Default_Shift_Map",
+"IF Adaptive_Control_Fault = TRUE THEN Disable_Adaptive_Control"
+]
+}
+},
+
+{
+"sample_id":"ASL_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe gear during adaptive learning faults.",
+"L3_requirement":"The TCU shall maintain predefined gear when Adaptive_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Adaptive_Fault = TRUE THEN Maintain_Default_Gear",
+"IF Adaptive_Fault = TRUE THEN Disable_Shift_Request",
+"IF Adaptive_Fault = FALSE THEN Resume_Normal_Shifting",
+"IF Adaptive_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF Adaptive_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"ASL_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall clear adaptive learning faults after recovery.",
+"L3_requirement":"The TCU shall clear adaptive fault when adaptive parameters return to normal range."
+},
+"output":{
+"L4_requirements":[
+"IF Adaptive_Parameter WITHIN Normal_Range THEN Clear_Adaptive_Fault",
+"IF Adaptive_Fault = FALSE THEN Resume_Normal_Operation",
+"IF Adaptive_Parameter OUTSIDE Normal_Range THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF Adaptive_Fault = FALSE THEN Restore_Normal_Control"
+]
+}
+}
+]

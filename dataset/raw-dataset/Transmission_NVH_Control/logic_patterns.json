@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF Vibration > Threshold THEN Activate_NVH_Control",
+"IF Shift_State = Active THEN Adjust_Clutch_Pressure",
+"IF Torque_Reduction = Active THEN Reduce_Vibration",
+"IF Fault = TRUE THEN Disable_NVH_Control",
+"IF Timer > Interval THEN Update_NVH_Parameters"
+]
+}

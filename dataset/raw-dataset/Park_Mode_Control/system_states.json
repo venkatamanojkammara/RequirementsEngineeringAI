@@ -1,0 +1,13 @@
+{
+"system_states":[
+"Park",
+"Reverse",
+"Neutral",
+"Drive",
+"Startup",
+"Shutdown",
+"Limp_Mode",
+"Diagnostic_Mode",
+"Normal_Operation"
+]
+}

@@ -1,0 +1,14 @@
+{
+"signals":[
+"Shift_State",
+"Shift_Jerk",
+"Shift_Vibration",
+"Engine_Torque",
+"Torque_Reduction_Command",
+"Clutch_Pressure",
+"Clutch_State",
+"Downshift_Command",
+"Synchronization_Error",
+"Shift_Quality_Fault"
+]
+}

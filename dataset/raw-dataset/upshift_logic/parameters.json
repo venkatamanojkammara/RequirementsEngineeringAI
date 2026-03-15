@@ -1,0 +1,21 @@
+{
+  "parameters": [
+    "Upshift_RPM",
+    "Adaptive_Upshift_RPM",
+    "Cruise_Upshift_RPM",
+    "Upshift_Speed",
+    "Upshift_Min_Speed",
+    "Upshift_Max_Speed",
+    "Min_Shift_Speed",
+    "Throttle_Limit",
+    "Cruise_Throttle_Limit",
+    "Efficiency_Throttle",
+    "Load_Limit",
+    "Cruise_Load_Limit",
+    "Torque_Limit",
+    "Max_RPM",
+    "Acceleration_Limit",
+    "Efficiency_Min_RPM",
+    "Efficiency_Max_RPM"
+  ]
+}
