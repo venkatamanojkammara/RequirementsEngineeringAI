@@ -30,7 +30,8 @@ def load_model():
     model = PeftModel.from_pretrained(
         base_model,
         ADAPTER_PATH,
-        device_map="cpu"
+        device_map="cpu",
+        dtype=torch.float16
     )
 
     model.eval()
