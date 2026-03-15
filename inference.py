@@ -29,7 +29,8 @@ def load_model():
 
     model = PeftModel.from_pretrained(
         base_model,
-        ADAPTER_PATH
+        ADAPTER_PATH,
+        device_map="cpu"
     )
 
     model.eval()
