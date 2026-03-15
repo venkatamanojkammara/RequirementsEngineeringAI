@@ -23,7 +23,7 @@ def load_model():
 
     base_model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
-        torch_dtype=torch.float16,
+        dtype=torch.float16,
         device_map="auto"
     )
 
