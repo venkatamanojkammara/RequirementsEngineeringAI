@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF <Condition> THEN Enable_Creep",
-"IF <Signal> > <Limit> THEN Disable_Creep",
-"IF <Fault> = TRUE THEN Activate_Protection",
-"IF <Signal> <= <Limit> THEN Maintain_Normal_Operation",
-"IF <Condition1> AND <Condition2> THEN <Action>"
-]
-}

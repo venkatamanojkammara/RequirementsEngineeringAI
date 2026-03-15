@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"NVH_Control_Fault",
-"Synchronization_Fault",
-"Vibration_Sensor_Fault",
-"Torque_Control_Fault",
-"System_Fault"
-]
-}

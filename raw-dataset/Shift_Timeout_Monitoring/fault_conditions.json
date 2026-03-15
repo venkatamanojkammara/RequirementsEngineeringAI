@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Shift_Timeout_Fault",
-"Incomplete_Shift_Fault",
-"Slow_Shift_Fault",
-"Actuator_Delay_Fault",
-"Gear_Engagement_Fault"
-]
-}

@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Vehicle_Speed_Sensor_Fault",
-"Vehicle_Speed_Signal_Invalid",
-"CAN_Communication_Fault",
-"TCU_Internal_Fault",
-"Wheel_Speed_Sensor_Fault"
-]
-}

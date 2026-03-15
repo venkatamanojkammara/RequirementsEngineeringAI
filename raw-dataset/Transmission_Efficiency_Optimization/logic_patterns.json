@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF Throttle < Threshold THEN Early_Upshift",
-"IF Engine_RPM > Max THEN Upshift",
-"IF Engine_RPM < Min THEN Downshift",
-"IF Load > Limit THEN Delay_Upshift",
-"IF Fault = TRUE THEN Disable_Efficiency_Mode"
-]
-}

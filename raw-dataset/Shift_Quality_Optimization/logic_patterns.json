@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF <Shift_State> = Active THEN <Action>",
-"IF <Signal> > <Threshold> THEN <Fault_Action>",
-"IF <Signal> <= <Threshold> THEN <Normal_Action>",
-"IF <Fault_Count> > <Limit> THEN Activate_Limp_Mode",
-"IF <Condition1> AND <Condition2> THEN <Action>"
-]
-}

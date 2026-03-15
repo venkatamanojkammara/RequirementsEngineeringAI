@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF Speed > Limit THEN Reject_Gear",
-"IF Brake != Pressed THEN Reject_Drive",
-"IF Fault = TRUE THEN Block_Gear",
-"IF Conflict = TRUE THEN Reject_Request",
-"IF Timer > Interval THEN Update_Parameters"
-]
-}

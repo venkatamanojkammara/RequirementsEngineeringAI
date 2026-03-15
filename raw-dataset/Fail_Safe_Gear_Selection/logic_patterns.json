@@ -1,9 +1,0 @@
-{
-"logic_patterns":[
-"IF <Fault> = TRUE THEN Select_Fail_Safe_Gear",
-"IF <Mode> = Active THEN Disable_Normal_Shifting",
-"IF <Signal> > <Limit> THEN Limit_Output",
-"IF <Fault_Count> > <Threshold> THEN Activate_FailSafe",
-"IF <Condition1> AND <Condition2> THEN System_Action"
-]
-}

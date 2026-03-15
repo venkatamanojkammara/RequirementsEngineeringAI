@@ -1,9 +1,0 @@
-{
-"fault_conditions":[
-"Launch_Control_Fault",
-"Clutch_Control_Fault",
-"Torque_Control_Fault",
-"Throttle_Sensor_Fault",
-"Wheel_Speed_Sensor_Fault"
-]
-}

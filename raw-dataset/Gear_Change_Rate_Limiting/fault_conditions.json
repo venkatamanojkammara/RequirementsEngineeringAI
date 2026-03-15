@@ -1,8 +1,0 @@
-{
-"fault_conditions":[
-"Rate_Limit_Fault",
-"Timer_Fault",
-"Speed_Sensor_Fault",
-"System_Fault"
-]
-}

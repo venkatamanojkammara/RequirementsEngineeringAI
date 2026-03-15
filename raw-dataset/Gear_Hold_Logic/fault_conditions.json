@@ -1,8 +1,0 @@
-{
-"fault_conditions":[
-"Gear_Hold_Fault",
-"System_Fault",
-"Engine_Overspeed_Fault",
-"Gear_Hold_Logic_Failure"
-]
-}

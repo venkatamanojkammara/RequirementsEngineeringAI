@@ -1,9 +1,0 @@
-{
-"parameters":[
-"Hill_Hold_Threshold",
-"Downhill_Hold_Limit",
-"Throttle_Hold_Threshold",
-"Gear_Hold_Speed_Limit",
-"Engine_Speed_Limit"
-]
-}
