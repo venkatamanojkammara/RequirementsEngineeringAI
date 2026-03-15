@@ -1,0 +1,13 @@
+{
+"signals":[
+"Manual_Shift_Request",
+"Automatic_Shift_Request",
+"Kickdown_Request",
+"Protection_Shift_Request",
+"Shift_Request_Count",
+"Shift_State",
+"Target_Gear",
+"Shift_Timer",
+"Shift_Request_Detected"
+]
+}

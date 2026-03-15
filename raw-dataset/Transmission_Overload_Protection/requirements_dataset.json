@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"TOP_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect overload conditions.",
+"L3_requirement":"The TCU shall detect overload when Transmission_Torque exceeds Torque_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Torque > Torque_Limit THEN Overload_Fault = TRUE",
+"IF Overload_Fault = TRUE THEN Trigger_Overload_DTC",
+"IF Transmission_Torque <= Torque_Limit THEN Maintain_Normal_Operation",
+"IF Overload_Fault = TRUE THEN Log_Diagnostic_Event",
+"IF Overload_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"TOP_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall reduce engine torque during overload.",
+"L3_requirement":"The TCU shall request torque reduction when Transmission_Torque exceeds Torque_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Torque > Torque_Limit THEN Request_Torque_Reduction",
+"IF Transmission_Torque <= Torque_Limit THEN Maintain_Normal_Torque",
+"IF Transmission_Torque > Critical_Torque THEN Activate_Limp_Mode",
+"IF Engine_Control_Fault = TRUE THEN Disable_Torque_Request",
+"IF Transmission_Torque > Torque_Limit THEN Log_Diagnostic_Data"
+]
+}
+},
+
+{
+"sample_id":"TOP_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent shifting during overload.",
+"L3_requirement":"The TCU shall inhibit shift commands when Overload_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Overload_Fault = TRUE THEN Disable_Shift_Command",
+"IF Overload_Fault = FALSE THEN Allow_Normal_Shifting",
+"IF Overload_Fault = TRUE AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Overload_Fault = TRUE THEN Maintain_Current_Gear",
+"IF Overload_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"TOP_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect persistent overload.",
+"L3_requirement":"The TCU shall detect fault when overload persists longer than Overload_Time_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Torque > Torque_Limit AND Overload_Duration > Overload_Time_Limit THEN Overload_Fault = TRUE",
+"IF Overload_Fault = TRUE THEN Trigger_Persistent_Overload_DTC",
+"IF Transmission_Torque <= Torque_Limit THEN Reset_Overload_Timer",
+"IF Overload_Fault = TRUE THEN Activate_Limp_Mode",
+"IF Overload_Timer_Fault = TRUE THEN Disable_Overload_Timing"
+]
+}
+},
+
+{
+"sample_id":"TOP_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall monitor input shaft torque for overload detection.",
+"L3_requirement":"The TCU shall detect overload when Input_Shaft_Torque exceeds Torque_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Input_Shaft_Torque > Torque_Limit THEN Overload_Fault = TRUE",
+"IF Input_Shaft_Torque <= Torque_Limit THEN Maintain_Normal_Operation",
+"IF Overload_Fault = TRUE THEN Trigger_Input_Torque_DTC",
+"IF Input_Shaft_Torque > Critical_Torque THEN Activate_Limp_Mode",
+"IF Torque_Sensor_Fault = TRUE THEN Disable_Torque_Monitoring"
+]
+}
+},
+
+{
+"sample_id":"TOP_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent clutch damage during overload.",
+"L3_requirement":"The TCU shall increase clutch pressure when overload condition occurs."
+},
+"output":{
+"L4_requirements":[
+"IF Overload_Fault = TRUE THEN Increase_Clutch_Pressure",
+"IF Overload_Fault = FALSE THEN Maintain_Normal_Pressure",
+"IF Clutch_Pressure > Pressure_Limit THEN Trigger_Pressure_DTC",
+"IF Overload_Fault = TRUE THEN Monitor_Clutch_Slip",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Control"
+]
+}
+},
+
+{
+"sample_id":"TOP_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall isolate overload fault sources.",
+"L3_requirement":"The TCU shall identify fault source when Overload_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Overload_Fault = TRUE THEN Identify_Fault_Source",
+"IF Fault_Source = Engine THEN Trigger_Engine_Overload_DTC",
+"IF Fault_Source = Transmission THEN Trigger_Transmission_Overload_DTC",
+"IF Fault_Source = Sensor THEN Trigger_Sensor_DTC",
+"IF Overload_Fault = TRUE THEN Log_Diagnostic_Data"
+]
+}
+},
+
+{
+"sample_id":"TOP_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe gear during overload.",
+"L3_requirement":"The TCU shall maintain predefined gear when Overload_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Overload_Fault = TRUE THEN Maintain_Default_Gear",
+"IF Overload_Fault = TRUE THEN Disable_Shift_Request",
+"IF Overload_Fault = FALSE THEN Resume_Normal_Shifting",
+"IF Overload_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF Overload_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"TOP_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall limit vehicle acceleration during overload.",
+"L3_requirement":"The TCU shall limit torque when overload condition occurs."
+},
+"output":{
+"L4_requirements":[
+"IF Overload_Fault = TRUE THEN Request_Torque_Reduction",
+"IF Overload_Fault = FALSE THEN Maintain_Normal_Torque",
+"IF Transmission_Torque > Critical_Torque THEN Activate_Limp_Mode",
+"IF Engine_Control_Fault = TRUE THEN Disable_Torque_Request",
+"IF Overload_Fault = TRUE THEN Log_Diagnostic_Event"
+]
+}
+},
+
+{
+"sample_id":"TOP_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall clear overload faults after load reduction.",
+"L3_requirement":"The TCU shall clear overload fault when Transmission_Torque returns below Torque_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Torque < Torque_Limit THEN Clear_Overload_Fault",
+"IF Overload_Fault = FALSE THEN Resume_Normal_Operation",
+"IF Transmission_Torque >= Torque_Limit THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF Overload_Fault = FALSE THEN Restore_Normal_Control"
+]
+}
+}
+]

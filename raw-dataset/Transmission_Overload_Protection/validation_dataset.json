@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect overload conditions.",
+"L3_requirement":"The TCU shall detect overload when Transmission_Torque exceeds Torque_Limit."
+},
+"expected_output":[
+"IF Transmission_Torque > Torque_Limit THEN Overload_Fault = TRUE",
+"IF Overload_Fault = TRUE THEN Trigger_Overload_DTC",
+"IF Transmission_Torque <= Torque_Limit THEN Maintain_Normal_Operation",
+"IF Overload_Fault = TRUE THEN Log_Diagnostic_Event"
+]
+}
+]

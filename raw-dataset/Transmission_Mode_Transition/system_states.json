@@ -1,0 +1,11 @@
+{
+"system_states":[
+"Eco_Mode",
+"Normal_Mode",
+"Sport_Mode",
+"Manual_Mode",
+"Snow_Mode",
+"Mode_Transition_State",
+"Protection_Mode"
+]
+}

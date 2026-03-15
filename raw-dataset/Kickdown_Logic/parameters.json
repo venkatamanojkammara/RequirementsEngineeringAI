@@ -1,0 +1,13 @@
+{
+"parameters":[
+"Kickdown_Threshold",
+"Rate_Threshold",
+"Min_Kickdown_Speed",
+"Max_RPM",
+"Critical_RPM",
+"Critical_Throttle",
+"Critical_Speed",
+"Load_Threshold",
+"Critical_Load"
+]
+}

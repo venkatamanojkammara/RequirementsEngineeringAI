@@ -1,0 +1,29 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear engagement when the brake pedal is not pressed.",
+"L3_requirement":"The TCU shall reject gear engagement when Brake_Pedal_Status equals Released."
+},
+"expected_output":[
+"IF Brake_Pedal_Status = Released THEN Gear_Engagement = Disabled",
+"IF Brake_Pedal_Status = Pressed THEN Gear_Engagement = Enabled",
+"IF Brake_Pedal_Status = Released AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Brake_Signal_Fault = TRUE THEN Gear_Engagement = Disabled"
+]
+},
+
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear engagement when vehicle speed exceeds safe limits.",
+"L3_requirement":"The TCU shall reject gear engagement when Vehicle_Speed exceeds Max_Engage_Speed."
+},
+"expected_output":[
+"IF Vehicle_Speed > Max_Engage_Speed THEN Gear_Engagement = Disabled",
+"IF Vehicle_Speed <= Max_Engage_Speed THEN Gear_Engagement = Enabled",
+"IF Vehicle_Speed > Max_Engage_Speed AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Gear_Engagement = Disabled"
+]
+}
+]

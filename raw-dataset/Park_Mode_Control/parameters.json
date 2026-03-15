@@ -1,0 +1,13 @@
+{
+"parameters":[
+"Max_RPM",
+"Throttle_Limit",
+"Voltage_Limit",
+"Pressure_Limit",
+"Max_Temp",
+"Critical_RPM",
+"Critical_Voltage",
+"Critical_Temp",
+"Fault_Limit"
+]
+}

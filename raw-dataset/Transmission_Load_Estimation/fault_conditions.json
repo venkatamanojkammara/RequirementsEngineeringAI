@@ -1,0 +1,9 @@
+{
+"fault_conditions":[
+"Load_Estimation_Fault",
+"System_Fault",
+"Throttle_Sensor_Fault",
+"Acceleration_Sensor_Fault",
+"Gear_Ratio_Sensor_Fault"
+]
+}

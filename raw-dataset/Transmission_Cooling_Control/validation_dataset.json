@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate cooling when oil temperature rises.",
+"L3_requirement":"The TCU shall activate cooling system when Transmission_Oil_Temp exceeds Cooling_Threshold."
+},
+"expected_output":[
+"IF Transmission_Oil_Temp > Cooling_Threshold THEN Activate_Cooling_System",
+"IF Transmission_Oil_Temp <= Cooling_Threshold THEN Maintain_Normal_Operation",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Trigger_Thermal_DTC",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Protection_Mode"
+]
+}
+]

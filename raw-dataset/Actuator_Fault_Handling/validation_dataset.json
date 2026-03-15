@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect shift actuator failures.",
+"L3_requirement":"The TCU shall detect fault when Shift_Actuator_Status equals Fault."
+},
+"expected_output":[
+"IF Shift_Actuator_Status = Fault THEN Actuator_Fault = TRUE",
+"IF Actuator_Fault = TRUE THEN Trigger_Shift_Actuator_DTC",
+"IF Actuator_Fault = TRUE THEN Disable_Shift_Command",
+"IF Shift_Actuator_Status = Operational THEN Clear_Fault_Status"
+]
+}
+]

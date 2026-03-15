@@ -1,0 +1,29 @@
+[
+    {
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall perform upshift when engine speed exceeds the calibrated limit.",
+    "L3_requirement":"The TCU shall command an upshift when Engine_Speed exceeds Upshift_RPM."
+        },
+    "expected_output":[
+        "IF Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+        "IF Engine_Speed <= Upshift_RPM THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Inhibit_Upshift",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear"
+        ]
+    },
+
+    {
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall downshift during low engine speed conditions.",
+    "L3_requirement":"The TCU shall trigger downshift when Engine_Speed falls below Downshift_RPM."
+        },
+    "expected_output":[
+        "IF Engine_Speed < Downshift_RPM THEN Shift_Command = Downshift",
+        "IF Engine_Speed >= Downshift_RPM THEN Maintain_Current_Gear",
+        "IF Gear_Position = First_Gear THEN Reject_Downshift",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear"
+        ]
+    }
+]

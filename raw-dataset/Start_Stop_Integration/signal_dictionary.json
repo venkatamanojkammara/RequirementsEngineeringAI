@@ -1,0 +1,13 @@
+{
+"signals":[
+"Engine_State",
+"Engine_Restart_State",
+"Start_Stop_Mode",
+"Start_Stop_Request",
+"Start_Stop_Fault",
+"Restart_Timer",
+"Clutch_Pressure",
+"Torque_Transfer_Active",
+"Shift_State"
+]
+}

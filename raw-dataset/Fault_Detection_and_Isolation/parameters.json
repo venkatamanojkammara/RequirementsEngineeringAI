@@ -1,0 +1,11 @@
+{
+"parameters":[
+"Slip_Threshold",
+"Ratio_Threshold",
+"Temp_Limit",
+"Critical_Temp",
+"Pressure_Limit",
+"Critical_Pressure",
+"Gear_Error_Limit"
+]
+}

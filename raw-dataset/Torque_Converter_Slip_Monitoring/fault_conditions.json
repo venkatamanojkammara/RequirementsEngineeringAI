@@ -1,0 +1,12 @@
+{
+"fault_conditions":[
+"TCC_Slip_Sensor_Fault",
+"Engine_Speed_Sensor_Fault",
+"Turbine_Speed_Sensor_Fault",
+"Vehicle_Speed_Sensor_Fault",
+"Throttle_Sensor_Fault",
+"Engine_Load_Sensor_Fault",
+"CAN_Communication_Fault",
+"TCU_Internal_Fault"
+]
+}

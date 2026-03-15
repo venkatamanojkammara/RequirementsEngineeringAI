@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"TSI_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent reverse gear engagement at high vehicle speed.",
+"L3_requirement":"The TCU shall reject reverse gear request when vehicle speed exceeds configured limit."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Reverse_Engagement_Speed_Limit THEN Reject_Reverse_Gear_Request",
+"IF Reverse_Gear_Request_Rejected = TRUE THEN Maintain_Current_Gear",
+"IF Reverse_Gear_Request_Rejected = TRUE THEN Log_Safety_Interlock_Event",
+"IF Vehicle_Speed <= Reverse_Engagement_Speed_Limit THEN Allow_Reverse_Gear_Request",
+"IF Reverse_Gear_Request_Rejected = TRUE THEN Trigger_Safety_Warning"
+]
+}
+},
+
+{
+"sample_id":"TSI_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent park gear engagement while the vehicle is moving.",
+"L3_requirement":"The TCU shall reject park gear request when vehicle speed is above threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Park_Engagement_Speed_Limit THEN Reject_Park_Gear_Request",
+"IF Park_Gear_Request_Rejected = TRUE THEN Maintain_Current_Gear",
+"IF Park_Gear_Request_Rejected = TRUE THEN Log_Park_Safety_Event",
+"IF Vehicle_Speed <= Park_Engagement_Speed_Limit THEN Allow_Park_Gear_Request",
+"IF Park_Gear_Request_Rejected = TRUE THEN Activate_Safety_Indicator"
+]
+}
+},
+
+{
+"sample_id":"TSI_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall require brake pedal input before drive engagement.",
+"L3_requirement":"The TCU shall verify brake pedal state before allowing drive gear."
+},
+"output":{
+"L4_requirements":[
+"IF Brake_Pedal = Pressed THEN Allow_Drive_Gear_Request",
+"IF Brake_Pedal != Pressed THEN Reject_Drive_Gear_Request",
+"IF Drive_Gear_Request_Rejected = TRUE THEN Maintain_Current_Gear",
+"IF Drive_Gear_Request_Rejected = TRUE THEN Log_Brake_Interlock_Event",
+"IF Brake_Pedal = Pressed THEN Confirm_Drive_Engagement"
+]
+}
+},
+
+{
+"sample_id":"TSI_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear engagement during system faults.",
+"L3_requirement":"The TCU shall block gear change when system fault is active."
+},
+"output":{
+"L4_requirements":[
+"IF System_Fault = TRUE THEN Reject_Gear_Request",
+"IF System_Fault = TRUE THEN Maintain_Current_Gear",
+"IF System_Fault = TRUE THEN Trigger_Safety_Fault_DTC",
+"IF System_Fault = TRUE THEN Log_Fault_Interlock_Event",
+"IF System_Fault = FALSE THEN Allow_Gear_Request"
+]
+}
+},
+
+{
+"sample_id":"TSI_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear engagement when engine state is invalid.",
+"L3_requirement":"The TCU shall reject gear engagement if engine state is not running."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_State != Running THEN Reject_Gear_Request",
+"IF Engine_State = Running THEN Allow_Gear_Request",
+"IF Gear_Request_Rejected = TRUE THEN Maintain_Current_Gear",
+"IF Gear_Request_Rejected = TRUE THEN Log_Engine_State_Interlock",
+"IF Engine_State != Running THEN Trigger_Safety_Warning"
+]
+}
+},
+
+{
+"sample_id":"TSI_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent simultaneous conflicting gear states.",
+"L3_requirement":"The TCU shall detect conflicting gear requests."
+},
+"output":{
+"L4_requirements":[
+"IF Gear_Request_Count > 1 THEN Detect_Gear_Conflict",
+"IF Gear_Conflict = TRUE THEN Reject_Lower_Priority_Request",
+"IF Gear_Conflict = TRUE THEN Maintain_Current_Gear",
+"IF Gear_Conflict = TRUE THEN Log_Gear_Conflict_Event",
+"IF Gear_Conflict = TRUE THEN Activate_Safety_Mode"
+]
+}
+},
+
+{
+"sample_id":"TSI_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear engagement during unsafe vehicle conditions.",
+"L3_requirement":"The TCU shall block gear engagement when safety condition is not satisfied."
+},
+"output":{
+"L4_requirements":[
+"IF Safety_Condition = FALSE THEN Reject_Gear_Request",
+"IF Safety_Condition = TRUE THEN Allow_Gear_Request",
+"IF Gear_Request_Rejected = TRUE THEN Maintain_Current_Gear",
+"IF Gear_Request_Rejected = TRUE THEN Log_Safety_Condition_Event",
+"IF Safety_Condition = FALSE THEN Trigger_Safety_Alarm"
+]
+}
+},
+
+{
+"sample_id":"TSI_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall monitor safety interlock activity.",
+"L3_requirement":"The TCU shall record diagnostics when safety interlock blocks a gear request."
+},
+"output":{
+"L4_requirements":[
+"IF Safety_Interlock_Active = TRUE THEN Record_Safety_State",
+"IF Safety_Interlock_Active = TRUE THEN Monitor_Gear_Request",
+"IF Safety_Interlock_Active = TRUE THEN Log_Safety_Interlock_Event",
+"IF Diagnostic_System_Fault = TRUE THEN Disable_State_Logging",
+"IF Safety_Interlock_Active = TRUE THEN Store_Diagnostic_Record"
+]
+}
+},
+
+{
+"sample_id":"TSI_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect safety interlock logic faults.",
+"L3_requirement":"The TCU shall detect failure of safety interlock mechanism."
+},
+"output":{
+"L4_requirements":[
+"IF Safety_Interlock_Error = TRUE THEN Safety_Interlock_Fault = TRUE",
+"IF Safety_Interlock_Fault = TRUE THEN Disable_Gear_Requests",
+"IF Safety_Interlock_Fault = TRUE THEN Trigger_Safety_DTC",
+"IF Safety_Interlock_Fault = TRUE THEN Maintain_Default_Gear",
+"IF Safety_Interlock_Fault = TRUE THEN Log_Safety_Interlock_Fault"
+]
+}
+},
+
+{
+"sample_id":"TSI_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall periodically update safety interlock configuration.",
+"L3_requirement":"The TCU shall refresh safety interlock parameters at configured interval."
+},
+"output":{
+"L4_requirements":[
+"IF Safety_Timer > Safety_Update_Interval THEN Refresh_Safety_Parameters",
+"IF Safety_Timer <= Safety_Update_Interval THEN Maintain_Current_Parameters",
+"IF Safety_Timer > Safety_Update_Interval THEN Reset_Safety_Timer",
+"IF Safety_Interlock_Mode = Active THEN Monitor_Timer_Status",
+"IF Safety_Timer > Safety_Update_Interval THEN Log_Safety_Update"
+]
+}
+}
+]

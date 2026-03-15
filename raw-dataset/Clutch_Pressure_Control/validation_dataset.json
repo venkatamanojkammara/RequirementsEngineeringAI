@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall control clutch hydraulic pressure during engagement.",
+"L3_requirement":"The TCU shall increase clutch pressure when clutch engagement command is issued."
+},
+"expected_output":[
+"IF Clutch_Command = Engage THEN Increase_Clutch_Pressure",
+"IF Clutch_Command = Disengage THEN Decrease_Clutch_Pressure",
+"IF Clutch_Pressure >= Target_Pressure THEN Maintain_Current_Pressure",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Control"
+]
+}
+]

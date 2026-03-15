@@ -1,0 +1,10 @@
+{
+"parameters":[
+"Load_Threshold",
+"Load_Shift_Limit",
+"Load_Safety_Limit",
+"Acceleration_Threshold",
+"Ratio_Threshold",
+"Load_Update_Interval"
+]
+}

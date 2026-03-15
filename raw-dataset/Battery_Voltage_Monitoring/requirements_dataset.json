@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"BVM_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect low battery voltage conditions.",
+"L3_requirement":"The TCU shall detect low voltage when Battery_Voltage falls below Voltage_Low_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage < Voltage_Low_Limit THEN Low_Voltage_Fault = TRUE",
+"IF Low_Voltage_Fault = TRUE THEN Trigger_Low_Voltage_DTC",
+"IF Battery_Voltage >= Voltage_Low_Limit THEN Maintain_Normal_Operation",
+"IF Low_Voltage_Fault = TRUE THEN Log_Diagnostic_Data",
+"IF Voltage_Sensor_Fault = TRUE THEN Disable_Voltage_Monitor"
+]
+}
+},
+
+{
+"sample_id":"BVM_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent shifting during critical low voltage.",
+"L3_requirement":"The TCU shall block shift commands when Battery_Voltage falls below Critical_Voltage."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage < Critical_Voltage THEN Disable_Shift_Command",
+"IF Battery_Voltage >= Critical_Voltage THEN Enable_Shift_Command",
+"IF Battery_Voltage < Critical_Voltage THEN Maintain_Current_Gear",
+"IF Low_Voltage_Fault = TRUE THEN Activate_Protection_Mode",
+"IF Voltage_Sensor_Fault = TRUE THEN Disable_Shift_Control"
+]
+}
+},
+
+{
+"sample_id":"BVM_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe gear during low voltage.",
+"L3_requirement":"The TCU shall maintain predefined gear when low voltage condition occurs."
+},
+"output":{
+"L4_requirements":[
+"IF Low_Voltage_Fault = TRUE THEN Maintain_Default_Gear",
+"IF Low_Voltage_Fault = TRUE THEN Disable_Shift_Request",
+"IF Low_Voltage_Fault = FALSE THEN Resume_Normal_Shifting",
+"IF Low_Voltage_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF Low_Voltage_Fault = TRUE THEN Activate_Limp_Mode"
+]
+}
+},
+
+{
+"sample_id":"BVM_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable non critical features during low voltage.",
+"L3_requirement":"The TCU shall disable adaptive shift learning when voltage falls below threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage < Voltage_Low_Limit THEN Disable_Adaptive_Shift_Learning",
+"IF Battery_Voltage >= Voltage_Low_Limit THEN Enable_Adaptive_Shift_Learning",
+"IF Adaptive_System_Fault = TRUE THEN Disable_Adaptive_Control",
+"IF Battery_Voltage < Voltage_Low_Limit THEN Monitor_Voltage_Level",
+"IF Voltage_Sensor_Fault = TRUE THEN Disable_Voltage_Monitor"
+]
+}
+},
+
+{
+"sample_id":"BVM_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect voltage recovery.",
+"L3_requirement":"The TCU shall clear low voltage condition when Battery_Voltage returns above recovery threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage > Voltage_Recovery_Limit THEN Clear_Low_Voltage_Fault",
+"IF Low_Voltage_Fault = FALSE THEN Resume_Normal_Operation",
+"IF Battery_Voltage <= Voltage_Recovery_Limit THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF Low_Voltage_Fault = FALSE THEN Restore_Shift_Control"
+]
+}
+},
+
+{
+"sample_id":"BVM_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect voltage sensor failure.",
+"L3_requirement":"The TCU shall detect voltage sensor fault when signal remains outside valid range."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage OUTSIDE Valid_Voltage_Range THEN Voltage_Sensor_Fault = TRUE",
+"IF Voltage_Sensor_Fault = TRUE THEN Trigger_Voltage_Sensor_DTC",
+"IF Voltage_Sensor_Fault = TRUE THEN Disable_Voltage_Monitor",
+"IF Voltage_Sensor_Fault = TRUE THEN Activate_Protection_Mode",
+"IF Battery_Voltage WITHIN Valid_Voltage_Range THEN Maintain_Normal_Operation"
+]
+}
+},
+
+{
+"sample_id":"BVM_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable start stop feature during low voltage.",
+"L3_requirement":"The TCU shall block start stop activation when Battery_Voltage falls below Voltage_Low_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage < Voltage_Low_Limit THEN Disable_Start_Stop_Mode",
+"IF Battery_Voltage >= Voltage_Low_Limit THEN Enable_Start_Stop_Mode",
+"IF Start_Stop_Request = TRUE AND Battery_Voltage < Voltage_Low_Limit THEN Reject_Start_Stop_Request",
+"IF Battery_Voltage < Voltage_Low_Limit THEN Monitor_Voltage_Level",
+"IF Voltage_Sensor_Fault = TRUE THEN Disable_Start_Stop_Control"
+]
+}
+},
+
+{
+"sample_id":"BVM_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall protect solenoids during low voltage.",
+"L3_requirement":"The TCU shall disable solenoid activation when Battery_Voltage falls below critical limit."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage < Critical_Voltage THEN Disable_Solenoid_Control",
+"IF Battery_Voltage >= Critical_Voltage THEN Enable_Solenoid_Control",
+"IF Solenoid_Control_Active = TRUE AND Battery_Voltage < Critical_Voltage THEN Trigger_Solenoid_Fault",
+"IF Voltage_Sensor_Fault = TRUE THEN Disable_Solenoid_Monitor",
+"IF Battery_Voltage < Critical_Voltage THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"BVM_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall log diagnostic data during low voltage events.",
+"L3_requirement":"The TCU shall store diagnostic information when low voltage condition occurs."
+},
+"output":{
+"L4_requirements":[
+"IF Low_Voltage_Fault = TRUE THEN Store_Diagnostic_Record",
+"IF Low_Voltage_Fault = TRUE THEN Log_Voltage_Event",
+"IF Battery_Voltage >= Voltage_Recovery_Limit THEN Stop_Event_Logging",
+"IF Diagnostic_System_Fault = TRUE THEN Disable_Event_Logging",
+"IF Low_Voltage_Fault = TRUE THEN Trigger_Low_Voltage_DTC"
+]
+}
+},
+
+{
+"sample_id":"BVM_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall restore normal behavior after voltage recovery.",
+"L3_requirement":"The TCU shall restore shift operations when battery voltage returns to normal."
+},
+"output":{
+"L4_requirements":[
+"IF Battery_Voltage > Voltage_Recovery_Limit THEN Enable_Shift_Control",
+"IF Low_Voltage_Fault = FALSE THEN Resume_Normal_Shifting",
+"IF Battery_Voltage <= Voltage_Recovery_Limit THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF Low_Voltage_Fault = FALSE THEN Restore_Normal_Operation"
+]
+}
+}
+]

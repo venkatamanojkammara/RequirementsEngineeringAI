@@ -1,0 +1,11 @@
+{
+"system_states":[
+"Normal_Operation",
+"Clutch_Engagement",
+"Slip_Detected",
+"Protection_Mode",
+"Limp_Mode",
+"Diagnostic_Mode",
+"Recovery_Mode"
+]
+}

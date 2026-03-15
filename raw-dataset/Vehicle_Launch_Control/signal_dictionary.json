@@ -1,0 +1,13 @@
+{
+"signals":[
+"Vehicle_Speed",
+"Throttle_Position",
+"Brake_Pedal",
+"Engine_Torque",
+"Wheel_Slip",
+"Wheel_Speed",
+"Launch_Control_Mode",
+"Launch_Request",
+"Clutch_Pressure"
+]
+}

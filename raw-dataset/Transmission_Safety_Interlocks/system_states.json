@@ -1,0 +1,8 @@
+{
+"system_states":[
+"Normal_Operation",
+"Safety_Interlock_Mode",
+"Protection_Mode",
+"Diagnostic_Mode"
+]
+}

@@ -1,0 +1,12 @@
+{
+"parameters":[
+"Reverse_Safe_Speed",
+"Max_RPM",
+"Throttle_Limit",
+"Pressure_Limit",
+"Max_Temp",
+"Critical_Speed",
+"Critical_RPM",
+"Critical_Pressure"
+]
+}

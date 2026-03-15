@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable launch control when vehicle starts from standstill.",
+"L3_requirement":"The TCU shall activate launch control when Vehicle_Speed equals zero and throttle input exceeds threshold."
+},
+"expected_output":[
+"IF Vehicle_Speed = 0 AND Throttle_Position > Launch_Throttle_Threshold THEN Activate_Launch_Control",
+"IF Launch_Control_Mode = Active THEN Enable_Clutch_Control",
+"IF Launch_Control_Mode = Active THEN Monitor_Engine_Torque",
+"IF Launch_Control_Mode = Active THEN Limit_Wheel_Slip"
+]
+}
+]

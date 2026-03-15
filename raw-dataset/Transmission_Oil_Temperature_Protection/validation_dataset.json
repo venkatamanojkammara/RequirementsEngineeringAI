@@ -1,0 +1,29 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable gear shifting during high oil temperature.",
+"L3_requirement":"The TCU shall inhibit shift commands when Transmission_Oil_Temp exceeds Max_Temp."
+},
+"expected_output":[
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp <= Max_Temp THEN Shift_Enable = TRUE",
+"IF Transmission_Oil_Temp > Warning_Temp THEN Activate_Temp_Warning",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled"
+]
+},
+
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate protection mode during overheating.",
+"L3_requirement":"The TCU shall enable protection mode when Transmission_Oil_Temp exceeds Protection_Temp."
+},
+"expected_output":[
+"IF Transmission_Oil_Temp > Protection_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp <= Protection_Temp THEN Protection_Mode = Disabled",
+"IF Protection_Mode = Enabled THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Activate_Emergency_Shutdown"
+]
+}
+]

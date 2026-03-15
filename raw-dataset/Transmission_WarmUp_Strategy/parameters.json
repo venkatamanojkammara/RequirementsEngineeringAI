@@ -1,0 +1,13 @@
+{
+"parameters":[
+"Warmup_Temp_Threshold",
+"Cold_Temp_Threshold",
+"Warmup_Exit_Temp",
+"Optimal_Temp",
+"Warmup_Upshift_RPM",
+"Warmup_Speed",
+"Min_Warmup_Speed",
+"Critical_Cold_Temp",
+"Critical_Speed"
+]
+}

@@ -1,0 +1,325 @@
+[
+{
+"sample_id":"TOT_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall protect the system when oil temperature exceeds safe operating limits.",
+"L3_requirement":"The TCU shall disable gear shifting when Transmission_Oil_Temp exceeds Max_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp <= Max_Temp THEN Shift_Enable = TRUE",
+"IF Transmission_Oil_Temp > Warning_Temp THEN Activate_Temp_Warning",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Thermal_Protection"
+]
+}
+},
+
+{
+"sample_id":"TOT_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate thermal protection when oil temperature becomes excessive.",
+"L3_requirement":"The TCU shall trigger protection mode when Transmission_Oil_Temp exceeds Critical_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Critical_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp <= Critical_Temp THEN Protection_Mode = Disabled",
+"IF Protection_Mode = Enabled THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Activate_Emergency_Protection",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Protection_Mode = Enabled"
+]
+}
+},
+
+{
+"sample_id":"TOT_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall generate warnings when oil temperature reaches warning limits.",
+"L3_requirement":"The TCU shall activate temperature warning when Transmission_Oil_Temp exceeds Warning_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Warning_Temp THEN Activate_Temp_Warning",
+"IF Transmission_Oil_Temp <= Warning_Temp THEN Clear_Temp_Warning",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Activate_Diagnostic_Flag",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Protection_Mode = Enabled"
+]
+}
+},
+
+{
+"sample_id":"TOT_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall reduce shift activity when oil temperature rises.",
+"L3_requirement":"The TCU shall delay gear shifts when Transmission_Oil_Temp exceeds Thermal_Control_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Thermal_Control_Temp THEN Delay_Shift_Request",
+"IF Transmission_Oil_Temp <= Thermal_Control_Temp THEN Allow_Shift_Request",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled"
+]
+}
+},
+
+{
+"sample_id":"TOT_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear shifts during extreme temperature conditions.",
+"L3_requirement":"The TCU shall inhibit gear shifts when Transmission_Oil_Temp exceeds Critical_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Critical_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp <= Critical_Temp THEN Shift_Enable = TRUE",
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Activate_Emergency_Shutdown",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Warning_Temp THEN Activate_Temp_Warning"
+]
+}
+},
+
+{
+"sample_id":"TOT_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate cooling strategies when oil temperature rises.",
+"L3_requirement":"The TCU shall enable cooling mode when Transmission_Oil_Temp exceeds Cooling_Trigger_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Cooling_Trigger_Temp THEN Cooling_Mode = Enabled",
+"IF Transmission_Oil_Temp <= Cooling_Trigger_Temp THEN Cooling_Mode = Disabled",
+"IF Cooling_Mode = Enabled THEN Reduce_Shift_Frequency",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Cooling_Mode = Enabled"
+]
+}
+},
+
+{
+"sample_id":"TOT_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall protect internal components from overheating.",
+"L3_requirement":"The TCU shall activate thermal protection when oil temperature exceeds the safety threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Safety_Temp THEN Protection_Mode = Enabled",
+"IF Protection_Mode = Enabled THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp <= Safety_Temp THEN Protection_Mode = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Thermal_Shutdown",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Protection_Mode = Enabled"
+]
+}
+},
+
+{
+"sample_id":"TOT_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall restrict gear operation when oil temperature becomes unstable.",
+"L3_requirement":"The TCU shall limit shift operations when Transmission_Oil_Temp fluctuates beyond stability limits."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Stability_Limit THEN Limit_Shift_Operations",
+"IF Transmission_Oil_Temp <= Stability_Limit THEN Normal_Shift_Operation",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Limit_Shift_Operations",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"TOT_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe operation during moderate overheating.",
+"L3_requirement":"The TCU shall reduce gear shifting when oil temperature exceeds Moderate_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Moderate_Temp THEN Reduce_Shift_Frequency",
+"IF Transmission_Oil_Temp <= Moderate_Temp THEN Normal_Shift_Frequency",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Thermal_Protection",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Reduce_Shift_Frequency"
+]
+}
+},
+
+{
+"sample_id":"TOT_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable shifting during emergency temperature conditions.",
+"L3_requirement":"The TCU shall inhibit gear shifts when Transmission_Oil_Temp exceeds Emergency_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp <= Emergency_Temp THEN Shift_Enable = TRUE",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Trigger_System_Alert"
+]
+}
+},
+
+{
+"sample_id":"TOT_011",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall activate diagnostic flags during temperature anomalies.",
+"L3_requirement":"The TCU shall generate a fault code when Transmission_Oil_Temp exceeds diagnostic threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Diagnostic_Temp THEN Trigger_Diagnostic_Code",
+"IF Transmission_Oil_Temp <= Diagnostic_Temp THEN Clear_Diagnostic_Code",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Trigger_Diagnostic_Code"
+]
+}
+},
+
+{
+"sample_id":"TOT_012",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall limit performance during high oil temperature conditions.",
+"L3_requirement":"The TCU shall restrict gear operation when Transmission_Oil_Temp exceeds Performance_Limit_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Performance_Limit_Temp THEN Limit_Transmission_Performance",
+"IF Transmission_Oil_Temp <= Performance_Limit_Temp THEN Normal_Transmission_Performance",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Thermal_Protection",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Limit_Transmission_Performance"
+]
+}
+},
+
+{
+"sample_id":"TOT_013",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall trigger alarms when oil temperature approaches dangerous limits.",
+"L3_requirement":"The TCU shall activate an alarm when Transmission_Oil_Temp exceeds Alarm_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Alarm_Temp THEN Activate_Alarm",
+"IF Transmission_Oil_Temp <= Alarm_Temp THEN Deactivate_Alarm",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Activate_Alarm"
+]
+}
+},
+
+{
+"sample_id":"TOT_014",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall reduce load during overheating conditions.",
+"L3_requirement":"The TCU shall reduce torque load when Transmission_Oil_Temp exceeds Torque_Reduction_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Torque_Reduction_Temp THEN Reduce_Torque_Load",
+"IF Transmission_Oil_Temp <= Torque_Reduction_Temp THEN Normal_Torque_Load",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Protection_Mode",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Reduce_Torque_Load"
+]
+}
+},
+
+{
+"sample_id":"TOT_015",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enter protection mode when oil temperature rises beyond safe operation.",
+"L3_requirement":"The TCU shall enable protection mode when Transmission_Oil_Temp exceeds Protection_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Protection_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp <= Protection_Temp THEN Protection_Mode = Disabled",
+"IF Protection_Mode = Enabled THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Activate_Emergency_Shutdown",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Protection_Mode = Enabled"
+]
+}
+},
+
+{
+"sample_id":"TOT_016",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent operation during extreme thermal events.",
+"L3_requirement":"The TCU shall stop gear operation when Transmission_Oil_Temp exceeds Shutdown_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Shutdown_Temp THEN Disable_Transmission_Operation",
+"IF Transmission_Oil_Temp <= Shutdown_Temp THEN Enable_Transmission_Operation",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Protection_Mode",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Disable_Transmission_Operation",
+"IF Transmission_Oil_Temp > Shutdown_Temp THEN Trigger_System_Shutdown"
+]
+}
+},
+
+{
+"sample_id":"TOT_017",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall regulate shift commands during overheating.",
+"L3_requirement":"The TCU shall restrict shift commands when Transmission_Oil_Temp exceeds Shift_Limit_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Shift_Limit_Temp THEN Restrict_Shift_Commands",
+"IF Transmission_Oil_Temp <= Shift_Limit_Temp THEN Normal_Shift_Commands",
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Protection_Mode = Enabled",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Restrict_Shift_Commands"
+]
+}
+},
+
+{
+"sample_id":"TOT_018",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall trigger fail-safe operation during severe overheating.",
+"L3_requirement":"The TCU shall activate fail-safe mode when Transmission_Oil_Temp exceeds FailSafe_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > FailSafe_Temp THEN FailSafe_Mode = Enabled",
+"IF Transmission_Oil_Temp <= FailSafe_Temp THEN FailSafe_Mode = Disabled",
+"IF FailSafe_Mode = Enabled THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Activate_Emergency_Shutdown",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN FailSafe_Mode = Enabled"
+]
+}
+}
+]

@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"SSI_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain gear during engine stop event.",
+"L3_requirement":"The TCU shall hold current gear when Engine_State equals stopped due to start-stop."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_State = Stopped AND Start_Stop_Mode = Active THEN Maintain_Current_Gear",
+"IF Engine_State = Running THEN Resume_Normal_Shifting",
+"IF Start_Stop_Mode = Active THEN Disable_Shift_Request",
+"IF Engine_State_Sensor_Fault = TRUE THEN Disable_Start_Stop_Function",
+"IF Start_Stop_Mode = Active THEN Monitor_Gear_State"
+]
+}
+},
+
+{
+"sample_id":"SSI_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent shifting during engine restart.",
+"L3_requirement":"The TCU shall block shift commands when engine restart is in progress."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Restart_State = Active THEN Disable_Shift_Command",
+"IF Engine_Restart_State = Completed THEN Enable_Shift_Command",
+"IF Engine_Restart_State = Active THEN Maintain_Current_Gear",
+"IF Restart_Control_Fault = TRUE THEN Disable_Start_Stop_Mode",
+"IF Engine_Restart_State = Active THEN Log_Restart_Event"
+]
+}
+},
+
+{
+"sample_id":"SSI_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain hydraulic pressure during engine stop.",
+"L3_requirement":"The TCU shall maintain minimum clutch pressure during start-stop idle phase."
+},
+"output":{
+"L4_requirements":[
+"IF Start_Stop_Mode = Active AND Engine_State = Stopped THEN Maintain_Min_Clutch_Pressure",
+"IF Engine_State = Running THEN Restore_Normal_Pressure",
+"IF Clutch_Pressure < Minimum_Pressure THEN Trigger_Pressure_Fault",
+"IF Pressure_Sensor_Fault = TRUE THEN Disable_Pressure_Control",
+"IF Start_Stop_Mode = Active THEN Monitor_Pressure_Level"
+]
+}
+},
+
+{
+"sample_id":"SSI_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable creep during engine stop.",
+"L3_requirement":"The TCU shall remove creep torque when engine is stopped."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_State = Stopped THEN Disable_Creep_Torque",
+"IF Engine_State = Running AND Brake_Pedal = Released THEN Enable_Creep_Torque",
+"IF Engine_State = Stopped THEN Maintain_Zero_Torque",
+"IF Engine_State_Sensor_Fault = TRUE THEN Disable_Creep_Control",
+"IF Engine_State = Stopped THEN Monitor_Creep_Status"
+]
+}
+},
+
+{
+"sample_id":"SSI_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall synchronize gear control during engine restart.",
+"L3_requirement":"The TCU shall re-enable shift control once engine restart completes."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Restart_State = Completed THEN Enable_Shift_Control",
+"IF Engine_Restart_State = Active THEN Disable_Shift_Control",
+"IF Restart_Duration > Restart_Limit THEN Trigger_Restart_Fault",
+"IF Restart_Control_Fault = TRUE THEN Disable_Start_Stop_Mode",
+"IF Engine_Restart_State = Completed THEN Resume_Normal_Shifting"
+]
+}
+},
+
+{
+"sample_id":"SSI_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent unintended movement during engine stop.",
+"L3_requirement":"The TCU shall disable torque transfer when engine is stopped."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_State = Stopped THEN Disable_Torque_Transfer",
+"IF Engine_State = Running THEN Enable_Torque_Transfer",
+"IF Torque_Transfer_Active = TRUE AND Engine_State = Stopped THEN Trigger_Torque_Fault",
+"IF Engine_State_Sensor_Fault = TRUE THEN Disable_Torque_Control",
+"IF Engine_State = Stopped THEN Monitor_Torque_State"
+]
+}
+},
+
+{
+"sample_id":"SSI_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect abnormal restart behavior.",
+"L3_requirement":"The TCU shall detect restart fault when engine restart exceeds time limit."
+},
+"output":{
+"L4_requirements":[
+"IF Restart_Timer > Restart_Time_Limit THEN Restart_Fault = TRUE",
+"IF Restart_Fault = TRUE THEN Trigger_Restart_DTC",
+"IF Restart_Timer <= Restart_Time_Limit THEN Maintain_Normal_Operation",
+"IF Restart_Fault = TRUE THEN Disable_Start_Stop_Mode",
+"IF Restart_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"SSI_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall maintain safe gear during start-stop faults.",
+"L3_requirement":"The TCU shall maintain predefined gear when Start_Stop_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Start_Stop_Fault = TRUE THEN Maintain_Default_Gear",
+"IF Start_Stop_Fault = TRUE THEN Disable_Shift_Request",
+"IF Start_Stop_Fault = FALSE THEN Resume_Normal_Shifting",
+"IF Start_Stop_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF Start_Stop_Fault = TRUE THEN Activate_Protection_Mode"
+]
+}
+},
+
+{
+"sample_id":"SSI_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent start-stop activation during shifting.",
+"L3_requirement":"The TCU shall block start-stop activation when shift operation is active."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_State = Active THEN Disable_Start_Stop_Mode",
+"IF Shift_State = Completed THEN Enable_Start_Stop_Mode",
+"IF Start_Stop_Request = TRUE AND Shift_State = Active THEN Reject_Start_Stop_Request",
+"IF Shift_State = Active THEN Monitor_Shift_Progress",
+"IF Shift_Control_Fault = TRUE THEN Disable_Start_Stop_Control"
+]
+}
+},
+
+{
+"sample_id":"SSI_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall clear start-stop faults after recovery.",
+"L3_requirement":"The TCU shall clear start-stop fault when restart completes successfully."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Restart_State = Completed THEN Clear_Start_Stop_Fault",
+"IF Start_Stop_Fault = FALSE THEN Resume_Normal_Operation",
+"IF Engine_Restart_State != Completed THEN Maintain_Fault_State",
+"IF Fault_Cleared = TRUE THEN Clear_Diagnostic_Code",
+"IF Start_Stop_Fault = FALSE THEN Restore_Start_Stop_Control"
+]
+}
+}
+]

@@ -1,0 +1,325 @@
+[
+{
+"sample_id":"GSI_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shifting when transmission oil temperature exceeds the safety threshold.",
+"L3_requirement":"The TCU shall disable shift commands when Transmission_Oil_Temp exceeds Max_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Max_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp <= Max_Temp THEN Shift_Enable = TRUE",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Gear_Position = Current_Gear AND Shift_Command = Disabled THEN Maintain_Current_Gear",
+"IF Transmission_Oil_Temp > Critical_Temp THEN Activate_Temperature_Warning"
+]
+}
+},
+
+{
+"sample_id":"GSI_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear shifts when a transmission fault is detected.",
+"L3_requirement":"The TCU shall inhibit shift commands when Shift_Actuator_Fault is active."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Actuator_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Shift_Actuator_Fault = FALSE THEN Shift_Enable = TRUE",
+"IF Shift_Command = Disabled THEN Maintain_Current_Gear",
+"IF Gear_Position_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF CAN_Communication_Fault = TRUE THEN Shift_Command = Disabled"
+]
+}
+},
+
+{
+"sample_id":"GSI_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shift when the gear state is invalid.",
+"L3_requirement":"The TCU shall reject shift requests when Actual_Gear does not match Commanded_Gear."
+},
+"output":{
+"L4_requirements":[
+"IF Actual_Gear != Commanded_Gear THEN Shift_Command = Disabled",
+"IF Actual_Gear = Commanded_Gear THEN Shift_Enable = TRUE",
+"IF Gear_Position_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Shift_Request = TRUE AND Actual_Gear != Commanded_Gear THEN Reject_Shift_Request",
+"IF Actual_Gear = Unknown_State THEN Shift_Command = Disabled"
+]
+}
+},
+
+{
+"sample_id":"GSI_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear shifting during ECU startup.",
+"L3_requirement":"The TCU shall disable shift commands when TCU_State equals Startup."
+},
+"output":{
+"L4_requirements":[
+"IF TCU_State = Startup THEN Shift_Command = Disabled",
+"IF TCU_State = Drive THEN Shift_Enable = TRUE",
+"IF TCU_State = Initialization THEN Shift_Command = Disabled",
+"IF TCU_State = Startup AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF TCU_State = Startup THEN Maintain_Current_Gear"
+]
+}
+},
+
+{
+"sample_id":"GSI_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear shifting when vehicle speed exceeds safe limits.",
+"L3_requirement":"The TCU shall inhibit shift commands when Vehicle_Speed exceeds Max_Safe_Shift_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Max_Safe_Shift_Speed THEN Shift_Command = Disabled",
+"IF Vehicle_Speed <= Max_Safe_Shift_Speed THEN Shift_Enable = TRUE",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Vehicle_Speed > Max_Safe_Shift_Speed AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed > Critical_Speed THEN Activate_Safety_Warning"
+]
+}
+},
+
+{
+"sample_id":"GSI_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit shifting when brake pedal is applied in reverse mode.",
+"L3_requirement":"The TCU shall reject shift commands when Brake_Pedal_Status is active and Gear_Position equals Reverse."
+},
+"output":{
+"L4_requirements":[
+"IF Brake_Pedal_Status = Pressed AND Gear_Position = Reverse THEN Shift_Command = Disabled",
+"IF Brake_Pedal_Status = Released THEN Shift_Enable = TRUE",
+"IF Gear_Position = Reverse AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Brake_Signal_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Gear_Position != Reverse THEN Shift_Enable = TRUE"
+]
+}
+},
+
+{
+"sample_id":"GSI_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shifts during CAN communication faults.",
+"L3_requirement":"The TCU shall disable shift commands when CAN_Communication_Fault is detected."
+},
+"output":{
+"L4_requirements":[
+"IF CAN_Communication_Fault = TRUE THEN Shift_Command = Disabled",
+"IF CAN_Communication_Fault = FALSE THEN Shift_Enable = TRUE",
+"IF CAN_Communication_Fault = TRUE AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Engine_Speed_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Command = Disabled"
+]
+}
+},
+
+{
+"sample_id":"GSI_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear shifting when transmission oil pressure is below safe limits.",
+"L3_requirement":"The TCU shall inhibit shift commands when Clutch_Pressure falls below Pressure_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Pressure < Pressure_Limit THEN Shift_Command = Disabled",
+"IF Clutch_Pressure >= Pressure_Limit THEN Shift_Enable = TRUE",
+"IF Clutch_Pressure_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Clutch_Pressure < Pressure_Limit AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Clutch_Pressure < Critical_Pressure THEN Trigger_Fault_Code"
+]
+}
+},
+
+{
+"sample_id":"GSI_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear shifts when the system enters limp-home mode.",
+"L3_requirement":"The TCU shall disable shift commands when TCU_State equals Limp_Mode."
+},
+"output":{
+"L4_requirements":[
+"IF TCU_State = Limp_Mode THEN Shift_Command = Disabled",
+"IF TCU_State != Limp_Mode THEN Shift_Enable = TRUE",
+"IF TCU_State = Limp_Mode AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Limp_Mode = TRUE THEN Maintain_Current_Gear",
+"IF System_Reset = TRUE THEN Shift_Enable = TRUE"
+]
+}
+},
+
+{
+"sample_id":"GSI_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent shifting when multiple sensor faults occur.",
+"L3_requirement":"The TCU shall inhibit gear shift when more than one sensor fault is active."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Speed_Sensor_Fault = TRUE AND Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Sensor_Fault_Count > 1 THEN Shift_Command = Disabled",
+"IF Sensor_Fault_Count <= 1 THEN Shift_Enable = TRUE",
+"IF Multiple_Faults = TRUE AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Fault_Status = Critical THEN Maintain_Current_Gear"
+]
+}
+},
+
+{
+"sample_id":"GSI_011",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shifting when engine speed exceeds safe operating limits.",
+"L3_requirement":"The TCU shall reject shift commands when Engine_Speed exceeds Max_RPM."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Speed > Max_RPM THEN Shift_Command = Disabled",
+"IF Engine_Speed <= Max_RPM THEN Shift_Enable = TRUE",
+"IF Engine_Speed_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Engine_Speed > Max_RPM AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Engine_Speed > Critical_RPM THEN Trigger_Engine_Protection"
+]
+}
+},
+
+{
+"sample_id":"GSI_012",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shifting when the gear actuator is not ready.",
+"L3_requirement":"The TCU shall disable shift commands when Shift_Actuator_Status equals Not_Ready."
+},
+"output":{
+"L4_requirements":[
+"IF Shift_Actuator_Status = Not_Ready THEN Shift_Command = Disabled",
+"IF Shift_Actuator_Status = Ready THEN Shift_Enable = TRUE",
+"IF Shift_Actuator_Status = Fault THEN Shift_Command = Disabled",
+"IF Shift_Actuator_Status = Not_Ready AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Shift_Actuator_Fault = TRUE THEN Maintain_Current_Gear"
+]
+}
+},
+
+{
+"sample_id":"GSI_013",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent gear shifts when transmission temperature reaches critical levels.",
+"L3_requirement":"The TCU shall inhibit gear shifts when Transmission_Oil_Temp exceeds Critical_Temp."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Oil_Temp > Critical_Temp THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp <= Critical_Temp THEN Shift_Enable = TRUE",
+"IF Transmission_Oil_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Transmission_Oil_Temp > Critical_Temp AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Transmission_Oil_Temp > Emergency_Temp THEN Trigger_Thermal_Protection"
+]
+}
+},
+
+{
+"sample_id":"GSI_014",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent shifting when clutch slip exceeds safe limits.",
+"L3_requirement":"The TCU shall inhibit shift commands when Clutch_Slip exceeds Slip_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Slip > Slip_Limit THEN Shift_Command = Disabled",
+"IF Clutch_Slip <= Slip_Limit THEN Shift_Enable = TRUE",
+"IF Clutch_Slip_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Clutch_Slip > Slip_Limit AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Clutch_Slip > Critical_Slip THEN Trigger_Clutch_Protection"
+]
+}
+},
+
+{
+"sample_id":"GSI_015",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shifting when engine torque exceeds safe limits.",
+"L3_requirement":"The TCU shall reject shift commands when Engine_Torque exceeds Torque_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Torque > Torque_Limit THEN Shift_Command = Disabled",
+"IF Engine_Torque <= Torque_Limit THEN Shift_Enable = TRUE",
+"IF Torque_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Engine_Torque > Torque_Limit AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Engine_Torque > Critical_Torque THEN Trigger_Torque_Protection"
+]
+}
+},
+
+{
+"sample_id":"GSI_016",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit shifting during reverse-to-drive transitions at high speeds.",
+"L3_requirement":"The TCU shall reject shift commands when Gear_Position equals Reverse and Vehicle_Speed exceeds Safe_Transition_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Gear_Position = Reverse AND Vehicle_Speed > Safe_Transition_Speed THEN Shift_Command = Disabled",
+"IF Vehicle_Speed <= Safe_Transition_Speed THEN Shift_Enable = TRUE",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Gear_Position = Reverse AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_Safety_Alert"
+]
+}
+},
+
+{
+"sample_id":"GSI_017",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shifts during clutch overheating conditions.",
+"L3_requirement":"The TCU shall disable shift commands when Clutch_Temperature exceeds Clutch_Temp_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Clutch_Temperature > Clutch_Temp_Limit THEN Shift_Command = Disabled",
+"IF Clutch_Temperature <= Clutch_Temp_Limit THEN Shift_Enable = TRUE",
+"IF Clutch_Temp_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+"IF Clutch_Temperature > Clutch_Temp_Limit AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Clutch_Temperature > Emergency_Clutch_Temp THEN Trigger_Clutch_Protection"
+]
+}
+},
+
+{
+"sample_id":"GSI_018",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall inhibit gear shifts when ECU diagnostics are active.",
+"L3_requirement":"The TCU shall disable shift commands when Diagnostic_Mode equals Active."
+},
+"output":{
+"L4_requirements":[
+"IF Diagnostic_Mode = Active THEN Shift_Command = Disabled",
+"IF Diagnostic_Mode = Inactive THEN Shift_Enable = TRUE",
+"IF Diagnostic_Mode = Active AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Diagnostic_Mode = Active THEN Maintain_Current_Gear",
+"IF Diagnostic_Mode = Active AND Fault_Status = Critical THEN Trigger_Diagnostic_Alert"
+]
+}
+}
+]

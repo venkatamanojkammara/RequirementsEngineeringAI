@@ -1,0 +1,12 @@
+{
+"system_states":[
+"Normal_Mode",
+"Uphill_Mode",
+"Downhill_Mode",
+"Hill_Assist_Mode",
+"Protection_Mode",
+"Startup",
+"Shutdown",
+"Diagnostic_Mode"
+]
+}

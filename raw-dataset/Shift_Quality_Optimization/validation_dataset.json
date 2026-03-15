@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall optimize shift quality during gear changes.",
+"L3_requirement":"The TCU shall reduce engine torque during shift execution."
+},
+"expected_output":[
+"IF Shift_State = Active THEN Request_Torque_Reduction",
+"IF Shift_State = Completed THEN Restore_Normal_Torque",
+"IF Torque_Reduction_Command = Active THEN Monitor_Shift_Smoothness",
+"IF Engine_Control_Fault = TRUE THEN Disable_Torque_Request"
+]
+}
+]

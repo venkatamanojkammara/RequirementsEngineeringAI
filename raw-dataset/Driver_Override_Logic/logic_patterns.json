@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF Driver_Request = TRUE THEN Override_Automatic_Control",
+"IF Engine_Speed > Limit THEN Reject_Downshift",
+"IF Shift_State = Active THEN Reject_Request",
+"IF Timer > Timeout THEN Exit_Override",
+"IF Fault = TRUE THEN Disable_Override"
+]
+}

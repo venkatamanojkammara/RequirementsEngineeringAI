@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"KD_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall trigger kickdown when the accelerator pedal is pressed aggressively.",
+"L3_requirement":"The TCU shall trigger downshift when Throttle_Position exceeds Kickdown_Threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Position > Kickdown_Threshold THEN Trigger_Downshift",
+"IF Throttle_Position <= Kickdown_Threshold THEN Maintain_Current_Gear",
+"IF Throttle_Position > Kickdown_Threshold AND Engine_Speed < Max_RPM THEN Trigger_Downshift",
+"IF Throttle_Position_Sensor_Fault = TRUE THEN Disable_Kickdown",
+"IF Throttle_Position > Critical_Throttle THEN Activate_Performance_Mode"
+]
+}
+},
+
+{
+"sample_id":"KD_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent kickdown when engine speed exceeds safe limits.",
+"L3_requirement":"The TCU shall reject kickdown when Engine_Speed exceeds Max_RPM."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Speed > Max_RPM THEN Disable_Kickdown",
+"IF Engine_Speed <= Max_RPM THEN Allow_Kickdown",
+"IF Engine_Speed > Max_RPM AND Kickdown_Request = TRUE THEN Reject_Downshift",
+"IF Engine_Speed_Sensor_Fault = TRUE THEN Disable_Kickdown",
+"IF Engine_Speed > Critical_RPM THEN Trigger_Engine_Protection"
+]
+}
+},
+
+{
+"sample_id":"KD_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable kickdown during high throttle rate increase.",
+"L3_requirement":"The TCU shall trigger kickdown when throttle rate exceeds Rate_Threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Rate > Rate_Threshold THEN Trigger_Downshift",
+"IF Throttle_Rate <= Rate_Threshold THEN Maintain_Current_Gear",
+"IF Throttle_Rate > Rate_Threshold AND Vehicle_Speed > Min_Kickdown_Speed THEN Trigger_Downshift",
+"IF Throttle_Position_Sensor_Fault = TRUE THEN Disable_Kickdown",
+"IF Throttle_Rate > Critical_Rate THEN Activate_Sport_Mode"
+]
+}
+},
+
+{
+"sample_id":"KD_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable kickdown during Eco mode.",
+"L3_requirement":"The TCU shall reject kickdown when Driving_Mode equals Eco."
+},
+"output":{
+"L4_requirements":[
+"IF Driving_Mode = Eco THEN Disable_Kickdown",
+"IF Driving_Mode != Eco THEN Enable_Kickdown",
+"IF Driving_Mode = Eco AND Kickdown_Request = TRUE THEN Reject_Kickdown",
+"IF Mode_Signal_Fault = TRUE THEN Maintain_Normal_Mode",
+"IF Driving_Mode = Eco THEN Enable_Economy_Shifting"
+]
+}
+},
+
+{
+"sample_id":"KD_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable kickdown only above minimum vehicle speed.",
+"L3_requirement":"The TCU shall trigger kickdown when Vehicle_Speed exceeds Min_Kickdown_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Min_Kickdown_Speed THEN Enable_Kickdown",
+"IF Vehicle_Speed <= Min_Kickdown_Speed THEN Disable_Kickdown",
+"IF Vehicle_Speed <= Min_Kickdown_Speed AND Kickdown_Request = TRUE THEN Reject_Kickdown",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Disable_Kickdown",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_Safety_Warning"
+]
+}
+},
+
+{
+"sample_id":"KD_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall trigger kickdown during full throttle operation.",
+"L3_requirement":"The TCU shall trigger downshift when Throttle_Position equals Maximum."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Position = Maximum THEN Trigger_Downshift",
+"IF Throttle_Position < Maximum THEN Maintain_Current_Gear",
+"IF Throttle_Position = Maximum AND Engine_Speed < Max_RPM THEN Trigger_Downshift",
+"IF Throttle_Position_Sensor_Fault = TRUE THEN Disable_Kickdown",
+"IF Throttle_Position = Maximum THEN Activate_Performance_Mode"
+]
+}
+},
+
+{
+"sample_id":"KD_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent kickdown when gear shift is already in progress.",
+"L3_requirement":"The TCU shall reject kickdown when Gear_Shift_In_Progress equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Gear_Shift_In_Progress = TRUE THEN Disable_Kickdown",
+"IF Gear_Shift_In_Progress = FALSE THEN Enable_Kickdown",
+"IF Gear_Shift_In_Progress = TRUE AND Kickdown_Request = TRUE THEN Reject_Kickdown",
+"IF Gear_Shift_In_Progress = TRUE THEN Maintain_Current_Gear",
+"IF Gear_Shift_In_Progress = TRUE THEN Trigger_Shift_Protection"
+]
+}
+},
+
+{
+"sample_id":"KD_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable kickdown during transmission faults.",
+"L3_requirement":"The TCU shall inhibit kickdown when Transmission_Fault equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Transmission_Fault = TRUE THEN Disable_Kickdown",
+"IF Transmission_Fault = FALSE THEN Enable_Kickdown",
+"IF Transmission_Fault = TRUE AND Kickdown_Request = TRUE THEN Reject_Kickdown",
+"IF Transmission_Fault = TRUE THEN Activate_Protection_Mode",
+"IF Transmission_Fault = TRUE THEN Trigger_Diagnostic_Code"
+]
+}
+},
+
+{
+"sample_id":"KD_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall trigger kickdown only when throttle signal is valid.",
+"L3_requirement":"The TCU shall enable kickdown when Throttle_Signal_Valid equals TRUE."
+},
+"output":{
+"L4_requirements":[
+"IF Throttle_Signal_Valid = TRUE THEN Enable_Kickdown",
+"IF Throttle_Signal_Valid = FALSE THEN Disable_Kickdown",
+"IF Throttle_Signal_Valid = FALSE AND Kickdown_Request = TRUE THEN Reject_Kickdown",
+"IF Throttle_Position_Sensor_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF Throttle_Signal_Valid = FALSE THEN Maintain_Current_Gear"
+]
+}
+},
+
+{
+"sample_id":"KD_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable kickdown only when engine load is high.",
+"L3_requirement":"The TCU shall trigger kickdown when Engine_Load exceeds Load_Threshold."
+},
+"output":{
+"L4_requirements":[
+"IF Engine_Load > Load_Threshold THEN Trigger_Downshift",
+"IF Engine_Load <= Load_Threshold THEN Maintain_Current_Gear",
+"IF Engine_Load > Load_Threshold AND Vehicle_Speed > Min_Kickdown_Speed THEN Trigger_Downshift",
+"IF Engine_Load_Sensor_Fault = TRUE THEN Disable_Kickdown",
+"IF Engine_Load > Critical_Load THEN Activate_Performance_Mode"
+]
+}
+}
+]

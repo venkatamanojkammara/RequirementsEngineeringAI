@@ -1,0 +1,9 @@
+{
+"system_states":[
+"Automatic_Mode",
+"Driver_Override_Mode",
+"Manual_Mode",
+"Protection_Mode",
+"Diagnostic_Mode"
+]
+}

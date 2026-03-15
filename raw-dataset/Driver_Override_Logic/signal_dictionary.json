@@ -1,0 +1,12 @@
+{
+"signals":[
+"Driver_Shift_Request",
+"Driver_Override_Mode",
+"Shift_State",
+"Target_Gear",
+"Engine_Speed",
+"Override_Timer",
+"System_Fault",
+"Driver_Request_Inconsistent"
+]
+}

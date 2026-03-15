@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect vehicle speed sensor faults.",
+"L3_requirement":"The TCU shall detect fault when Vehicle_Speed_Sensor_Status equals Invalid."
+},
+"expected_output":[
+"IF Vehicle_Speed_Sensor_Status = Invalid THEN Sensor_Fault = TRUE",
+"IF Sensor_Fault = TRUE THEN Trigger_Speed_Sensor_DTC",
+"IF Sensor_Fault = TRUE THEN Maintain_Default_Gear",
+"IF Vehicle_Speed_Sensor_Status = Valid THEN Clear_Fault_Status"
+]
+}
+]

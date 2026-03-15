@@ -1,0 +1,15 @@
+{
+"signals":[
+"Actual_Gear_Position",
+"Commanded_Gear",
+"Gear_Position",
+"Gear_Position_Sensor_Status",
+"Gear_Position_Fault",
+"Gear_Position_Fault_Count",
+"Gear_Engagement_Time",
+"Gear_Ratio",
+"Expected_Gear_Ratio",
+"Retry_Attempt_Count",
+"Fault_Cleared"
+]
+}

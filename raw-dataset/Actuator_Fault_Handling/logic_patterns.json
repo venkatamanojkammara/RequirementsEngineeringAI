@@ -1,0 +1,10 @@
+{
+"logic_patterns":[
+"IF <Signal> = Fault THEN <Fault_Action>",
+"IF <Signal> > <Threshold> THEN <Fault_Action>",
+"IF <Signal> < <Threshold> THEN <Fault_Action>",
+"IF <Fault_Count> > <Limit> THEN Activate_Limp_Mode",
+"IF <Condition1> AND <Condition2> THEN <Action>",
+"IF <Fault_Code> THEN Identify_Fault_Source"
+]
+}

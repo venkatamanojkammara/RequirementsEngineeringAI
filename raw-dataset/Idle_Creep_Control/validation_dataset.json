@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable creep function in Drive mode.",
+"L3_requirement":"The TCU shall apply creep torque when brake pedal is released."
+},
+"expected_output":[
+"IF Gear_Position = Drive AND Brake_Pedal = Released THEN Enable_Creep_Torque",
+"IF Brake_Pedal = Pressed THEN Disable_Creep_Torque",
+"IF Vehicle_Speed > Creep_Speed_Limit THEN Disable_Creep_Torque",
+"IF Creep_Torque_Active = TRUE THEN Monitor_Vehicle_Speed"
+]
+}
+]

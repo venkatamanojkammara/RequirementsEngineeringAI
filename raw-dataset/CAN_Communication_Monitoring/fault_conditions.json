@@ -1,0 +1,10 @@
+{
+"fault_conditions":[
+"CAN_Message_Missing_Fault",
+"CAN_Message_Corruption_Fault",
+"CAN_Message_Delay_Fault",
+"CAN_Data_Invalid_Fault",
+"CAN_Controller_Fault",
+"CAN_Communication_Fault"
+]
+}

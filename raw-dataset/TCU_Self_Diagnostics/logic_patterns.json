@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF Checksum = Invalid THEN Fault_Action",
+"IF Load > Limit THEN Protection_Action",
+"IF Fault = TRUE THEN Activate_Limp_Mode",
+"IF Execution_Time > Deadline THEN Restart_Task",
+"IF Condition1 AND Condition2 THEN System_Action"
+]
+}

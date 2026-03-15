@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall detect shift timeout conditions.",
+"L3_requirement":"The TCU shall detect shift fault when Shift_Duration exceeds Shift_Timeout_Threshold."
+},
+"expected_output":[
+"IF Shift_Duration > Shift_Timeout_Threshold THEN Shift_Timeout_Fault = TRUE",
+"IF Shift_Timeout_Fault = TRUE THEN Trigger_Shift_Timeout_DTC",
+"IF Shift_Duration <= Shift_Timeout_Threshold THEN Maintain_Normal_Operation",
+"IF Shift_Timeout_Fault = TRUE THEN Log_Diagnostic_Event"
+]
+}
+]

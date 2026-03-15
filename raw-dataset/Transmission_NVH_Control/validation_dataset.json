@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall minimize shift shock during gear changes.",
+"L3_requirement":"The TCU shall control clutch pressure ramp during gear shift."
+},
+"expected_output":[
+"IF Shift_State = Active THEN Gradually_Increase_Clutch_Pressure",
+"IF Clutch_Pressure_Ramp = Active THEN Monitor_Shift_Smoothness",
+"IF Clutch_Pressure > Max_Clutch_Limit THEN Limit_Clutch_Pressure",
+"IF Shift_State = Active THEN Log_Shift_Smoothness_Event"
+]
+}
+]

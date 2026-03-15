@@ -1,0 +1,9 @@
+{
+"fault_conditions":[
+"Cooling_Fan_Fault",
+"Oil_Pump_Fault",
+"Temperature_Sensor_Fault",
+"Cooling_System_Fault",
+"Thermal_Protection_Fault"
+]
+}

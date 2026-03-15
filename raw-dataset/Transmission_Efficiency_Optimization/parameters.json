@@ -1,0 +1,11 @@
+{
+"parameters":[
+"Eco_Throttle_Threshold",
+"Efficiency_RPM_Min",
+"Efficiency_RPM_Max",
+"Eco_Speed_Threshold",
+"Torque_Hold_Limit",
+"Load_Efficiency_Limit",
+"Efficiency_Update_Interval"
+]
+}

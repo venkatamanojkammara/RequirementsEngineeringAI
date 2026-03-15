@@ -1,0 +1,9 @@
+{
+"logic_patterns":[
+"IF Gradient > Threshold THEN Enable_Gear_Hold",
+"IF Throttle > Limit THEN Delay_Upshift",
+"IF Speed > Limit THEN Release_Gear_Hold",
+"IF Fault = TRUE THEN Disable_Gear_Hold",
+"IF Condition1 AND Condition2 THEN Maintain_Gear"
+]
+}

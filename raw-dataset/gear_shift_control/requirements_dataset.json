@@ -1,0 +1,325 @@
+[
+    {
+        "sample_id":"GSC_001",
+        "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+        "input":{
+        "L2_requirement":"The transmission system shall perform gear shifts based on engine speed and vehicle speed.",
+        "L3_requirement":"The TCU shall command an upshift when engine speed exceeds the calibrated upshift threshold."
+            },
+        "output":{
+            "L4_requirements":[
+            "IF Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+            "IF Engine_Speed <= Upshift_RPM THEN Maintain_Current_Gear",
+            "IF Vehicle_Speed < Min_Shift_Speed THEN Shift_Command = Inhibit",
+            "IF Engine_Speed_Sensor_Fault = TRUE THEN Shift_Command = Disabled",
+            "IF Shift_Request = Upshift AND Gear_Position = Current_Gear THEN Execute_Upshift"
+            ]
+        }
+    },
+
+    {
+        "sample_id":"GSC_002",
+        "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+        "input":{
+        "L2_requirement":"The transmission shall downshift when engine speed drops below a calibrated limit.",
+        "L3_requirement":"The TCU shall trigger a downshift when engine speed falls below Downshift_RPM."
+            },
+        "output":{
+            "L4_requirements":[
+            "IF Engine_Speed < Downshift_RPM THEN Shift_Command = Downshift",
+            "IF Engine_Speed >= Downshift_RPM THEN Maintain_Current_Gear",
+            "IF Vehicle_Speed <= Min_Vehicle_Speed THEN Shift_Command = Disabled",
+            "IF Engine_Speed_Sensor_Fault = TRUE THEN Disable_Shift",
+            "IF Gear_Position = First_Gear THEN Downshift_Command = Rejected"
+            ]
+        }
+    },
+
+    {
+        "sample_id":"GSC_003",
+        "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+        "input":{
+        "L2_requirement":"The transmission shall adjust shifting based on engine load conditions.",
+        "L3_requirement":"The TCU shall delay upshift when engine load exceeds Load_Limit."
+            },
+        "output":{
+        "L4_requirements":[
+            "IF Engine_Load > Load_Limit THEN Upshift_Request = Delayed",
+            "IF Engine_Load <= Load_Limit AND Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+            "IF Vehicle_Speed < Min_Shift_Speed THEN Shift_Command = Inhibit",
+            "IF Engine_Load_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+            "IF Gear_Position = Neutral THEN Shift_Command = Disabled"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_004",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall shift gears based on combined engine speed and throttle conditions.",
+    "L3_requirement":"The TCU shall permit upshift when throttle position is below the calibrated threshold."
+        },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed > Upshift_RPM AND Throttle_Position < Throttle_Limit THEN Shift_Command = Upshift",
+        "IF Throttle_Position >= Throttle_Limit THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Inhibit_Upshift",
+        "IF Throttle_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Current_Gear AND Shift_Command = Upshift THEN Execute_Shift"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_005",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall ensure smooth downshift during deceleration.",
+    "L3_requirement":"The TCU shall trigger downshift when engine speed falls within the calibrated deceleration range."
+        },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed < Downshift_RPM AND Brake_Pedal_Status = Pressed THEN Shift_Command = Downshift",
+        "IF Engine_Speed >= Downshift_RPM THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed <= Min_Vehicle_Speed THEN Shift_Command = Disabled",
+        "IF Brake_Signal_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = First_Gear THEN Downshift_Command = Rejected"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_006",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall perform upshift based on vehicle speed thresholds.",
+    "L3_requirement":"The TCU shall allow upshift when vehicle speed exceeds Upshift_Speed."
+        },
+    "output":{
+    "L4_requirements":[
+        "IF Vehicle_Speed > Upshift_Speed THEN Shift_Command = Upshift",
+        "IF Vehicle_Speed <= Upshift_Speed THEN Maintain_Current_Gear",
+        "IF Engine_Speed > Max_RPM THEN Force_Upshift",
+        "IF Vehicle_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Top_Gear THEN Upshift_Command = Rejected"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_007",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall perform downshift when vehicle speed decreases significantly.",
+    "L3_requirement":"The TCU shall initiate downshift when vehicle speed drops below Downshift_Speed."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Vehicle_Speed < Downshift_Speed THEN Shift_Command = Downshift",
+        "IF Vehicle_Speed >= Downshift_Speed THEN Maintain_Current_Gear",
+        "IF Engine_Speed < Idle_RPM THEN Downshift_Request = Rejected",
+        "IF Vehicle_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = First_Gear THEN Downshift_Command = Disabled"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_008",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall coordinate shift decisions using engine speed and vehicle speed.",
+    "L3_requirement":"The TCU shall permit gear shift when both engine speed and vehicle speed satisfy calibrated limits."
+        },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed > Upshift_RPM AND Vehicle_Speed > Min_Shift_Speed THEN Shift_Command = Upshift",
+        "IF Engine_Speed < Downshift_RPM AND Vehicle_Speed < Downshift_Speed THEN Shift_Command = Downshift",
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Shift_Command = Disabled",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_009",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall prevent unnecessary shifts under stable speed conditions.",
+    "L3_requirement":"The TCU shall maintain the current gear when engine speed remains within the calibrated band."
+        },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed >= Downshift_RPM AND Engine_Speed <= Upshift_RPM THEN Maintain_Current_Gear",
+        "IF Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+        "IF Engine_Speed < Downshift_RPM THEN Shift_Command = Downshift",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Neutral THEN Shift_Command = Disabled"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_010",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall perform gear shifts considering both vehicle speed and engine torque.",
+    "L3_requirement":"The TCU shall delay upshift when torque demand is high."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Torque > Torque_Limit THEN Upshift_Request = Delayed",
+        "IF Engine_Torque <= Torque_Limit AND Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Shift_Command = Disabled",
+        "IF Torque_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Current_Gear AND Shift_Command = Upshift THEN Execute_Shift"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_011",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall initiate downshift under low speed and load conditions.",
+    "L3_requirement":"The TCU shall trigger downshift when engine speed and vehicle speed fall below thresholds."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed < Downshift_RPM AND Vehicle_Speed < Downshift_Speed THEN Shift_Command = Downshift",
+        "IF Engine_Speed >= Downshift_RPM THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed <= Min_Vehicle_Speed THEN Downshift_Request = Rejected",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_012",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall prevent gear shift during extremely low vehicle speeds.",
+    "L3_requirement":"The TCU shall inhibit gear shift when vehicle speed is below Min_Shift_Speed."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Shift_Command = Disabled",
+        "IF Vehicle_Speed >= Min_Shift_Speed AND Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+        "IF Vehicle_Speed >= Min_Shift_Speed AND Engine_Speed < Downshift_RPM THEN Shift_Command = Downshift",
+        "IF Vehicle_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Neutral THEN Shift_Command = Disabled"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_013",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall coordinate engine speed and throttle for shift timing.",
+    "L3_requirement":"The TCU shall delay downshift when throttle demand is high."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Throttle_Position > Throttle_Limit THEN Downshift_Request = Delayed",
+        "IF Engine_Speed < Downshift_RPM AND Throttle_Position <= Throttle_Limit THEN Shift_Command = Downshift",
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Downshift_Request = Rejected",
+        "IF Throttle_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = First_Gear THEN Downshift_Command = Disabled"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_014",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall validate shift conditions before executing gear change.",
+    "L3_requirement":"The TCU shall execute gear shift only when valid speed and load conditions are satisfied."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed > Upshift_RPM AND Vehicle_Speed > Min_Shift_Speed THEN Shift_Command = Upshift",
+        "IF Engine_Speed < Downshift_RPM AND Vehicle_Speed < Downshift_Speed THEN Shift_Command = Downshift",
+        "IF Engine_Load > Load_Limit THEN Shift_Command = Delayed",
+        "IF Engine_Load_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Current_Gear AND Shift_Command != None THEN Execute_Shift"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_015",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall adapt shifting during moderate acceleration.",
+    "L3_requirement":"The TCU shall trigger upshift when engine speed exceeds calibrated limits during acceleration."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed > Upshift_RPM AND Throttle_Position BETWEEN Moderate_Low AND Moderate_High THEN Shift_Command = Upshift",
+        "IF Engine_Speed <= Upshift_RPM THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed < Min_Shift_Speed THEN Shift_Command = Disabled",
+        "IF Throttle_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Top_Gear THEN Upshift_Command = Rejected"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_016",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall respond to varying engine loads during shifting.",
+    "L3_requirement":"The TCU shall adjust shift timing based on engine load thresholds."
+    },
+    "output":{
+        "L4_requirements":[
+        "IF Engine_Load > Load_Limit THEN Upshift_Request = Delayed",
+        "IF Engine_Load <= Load_Limit AND Engine_Speed > Upshift_RPM THEN Shift_Command = Upshift",
+        "IF Engine_Load < Low_Load_Limit AND Engine_Speed < Downshift_RPM THEN Shift_Command = Downshift",
+        "IF Engine_Load_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Neutral THEN Shift_Command = Disabled"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_017",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall adjust gear selection during steady cruising.",
+    "L3_requirement":"The TCU shall maintain gear when engine speed and vehicle speed remain within optimal cruising limits."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed BETWEEN Cruise_Min_RPM AND Cruise_Max_RPM THEN Maintain_Current_Gear",
+        "IF Engine_Speed > Cruise_Max_RPM THEN Shift_Command = Upshift",
+        "IF Engine_Speed < Cruise_Min_RPM THEN Shift_Command = Downshift",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Vehicle_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear"
+            ]
+        }
+    },
+
+    {
+    "sample_id":"GSC_018",
+    "instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+    "input":{
+    "L2_requirement":"The transmission shall perform safe gear changes under dynamic driving conditions.",
+    "L3_requirement":"The TCU shall evaluate speed, load, and throttle inputs before issuing gear shift commands."
+    },
+    "output":{
+    "L4_requirements":[
+        "IF Engine_Speed > Upshift_RPM AND Vehicle_Speed > Min_Shift_Speed AND Throttle_Position < Throttle_Limit THEN Shift_Command = Upshift",
+        "IF Engine_Speed < Downshift_RPM AND Vehicle_Speed < Downshift_Speed THEN Shift_Command = Downshift",
+        "IF Engine_Load > Load_Limit THEN Upshift_Request = Delayed",
+        "IF Engine_Speed_Sensor_Fault = TRUE THEN Maintain_Current_Gear",
+        "IF Gear_Position = Neutral THEN Shift_Command = Disabled"
+            ]
+        }
+    }
+]   

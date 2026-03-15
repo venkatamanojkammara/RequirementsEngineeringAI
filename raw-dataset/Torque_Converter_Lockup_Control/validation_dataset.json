@@ -1,0 +1,29 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall engage torque converter lock-up during steady cruising.",
+"L3_requirement":"The TCU shall engage torque converter clutch when vehicle speed exceeds Lockup_Speed."
+},
+"expected_output":[
+"IF Vehicle_Speed > Lockup_Speed THEN TCC_Command = Engage",
+"IF Vehicle_Speed <= Lockup_Speed THEN TCC_Command = Disengage",
+"IF Gear_Position < Third_Gear THEN TCC_Command = Disengage",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN TCC_Command = Disengage"
+]
+},
+
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disengage lock-up during braking.",
+"L3_requirement":"The TCU shall release torque converter clutch when Brake_Pedal_Status is active."
+},
+"expected_output":[
+"IF Brake_Pedal_Status = Pressed THEN TCC_Command = Disengage",
+"IF Brake_Pedal_Status = Released AND Vehicle_Speed > Lockup_Speed THEN TCC_Command = Engage",
+"IF Vehicle_Speed < Unlock_Speed THEN TCC_Command = Disengage",
+"IF Brake_Signal_Fault = TRUE THEN TCC_Command = Disengage"
+]
+}
+]

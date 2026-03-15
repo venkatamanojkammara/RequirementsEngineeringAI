@@ -1,0 +1,29 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prioritize fuel efficiency in Eco mode.",
+"L3_requirement":"The TCU shall trigger early upshift when Driving_Mode equals Eco."
+},
+"expected_output":[
+"IF Driving_Mode = Eco THEN Upshift_RPM = Eco_Upshift_RPM",
+"IF Driving_Mode = Eco AND Engine_Speed > Eco_Upshift_RPM THEN Trigger_Upshift",
+"IF Driving_Mode = Eco AND Throttle_Position < Economy_Throttle THEN Trigger_Early_Upshift",
+"IF Driving_Mode = Eco THEN Enable_Economy_Shifting"
+]
+},
+
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall provide aggressive shifting in Sport mode.",
+"L3_requirement":"The TCU shall delay upshift when Driving_Mode equals Sport."
+},
+"expected_output":[
+"IF Driving_Mode = Sport THEN Upshift_RPM = Sport_Upshift_RPM",
+"IF Driving_Mode = Sport AND Engine_Speed > Sport_Upshift_RPM THEN Trigger_Upshift",
+"IF Driving_Mode = Sport THEN Delay_Upshift",
+"IF Driving_Mode = Sport AND Throttle_Position > Sport_Throttle THEN Trigger_Downshift"
+]
+}
+]

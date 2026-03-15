@@ -1,0 +1,13 @@
+{
+"signals":[
+"Shift_State",
+"Clutch_Pressure",
+"Engine_Torque",
+"Vehicle_Speed",
+"Gear_Position",
+"Vibration_Level",
+"NVH_Control_Mode",
+"NVH_Timer",
+"System_Fault"
+]
+}

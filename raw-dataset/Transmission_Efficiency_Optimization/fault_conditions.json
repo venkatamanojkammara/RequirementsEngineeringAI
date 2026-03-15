@@ -1,0 +1,9 @@
+{
+"fault_conditions":[
+"Efficiency_Logic_Fault",
+"Eco_Shift_Error",
+"Load_Estimation_Fault",
+"Speed_Sensor_Fault",
+"Torque_Sensor_Fault"
+]
+}

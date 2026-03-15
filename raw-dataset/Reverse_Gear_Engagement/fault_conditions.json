@@ -1,0 +1,12 @@
+{
+"fault_conditions":[
+"Vehicle_Speed_Sensor_Fault",
+"Engine_Speed_Sensor_Fault",
+"Throttle_Sensor_Fault",
+"Clutch_Pressure_Sensor_Fault",
+"Transmission_Oil_Temp_Sensor_Fault",
+"Shift_Actuator_Fault",
+"CAN_Communication_Fault",
+"TCU_Internal_Fault"
+]
+}

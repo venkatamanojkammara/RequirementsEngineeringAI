@@ -1,0 +1,15 @@
+[
+{
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent reverse engagement when the vehicle is moving.",
+"L3_requirement":"The TCU shall reject reverse engagement when Vehicle_Speed exceeds Reverse_Safe_Speed."
+},
+"expected_output":[
+"IF Vehicle_Speed > Reverse_Safe_Speed THEN Reverse_Engagement = Disabled",
+"IF Vehicle_Speed <= Reverse_Safe_Speed THEN Reverse_Engagement = Enabled",
+"IF Vehicle_Speed > Reverse_Safe_Speed AND Shift_Request = Reverse THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Reverse_Engagement = Disabled"
+]
+}
+]

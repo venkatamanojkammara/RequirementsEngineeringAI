@@ -1,0 +1,13 @@
+{
+"signals":[
+"Vehicle_Speed",
+"Brake_Pedal",
+"Gear_Request",
+"Gear_Request_Count",
+"Engine_State",
+"System_Fault",
+"Safety_Condition",
+"Safety_Interlock_Active",
+"Safety_Timer"
+]
+}

@@ -1,0 +1,12 @@
+{
+"system_states":[
+"Normal_Mode",
+"Limp_Home_Mode",
+"Protection_Mode",
+"Fault_Mode",
+"Startup",
+"Shutdown",
+"Diagnostic_Mode",
+"Recovery_Mode"
+]
+}

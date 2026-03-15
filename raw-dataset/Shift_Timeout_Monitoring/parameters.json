@@ -1,0 +1,12 @@
+{
+"parameters":[
+"Shift_Timeout_Threshold",
+"Retry_Limit",
+"Timeout_Limit",
+"Engagement_Limit",
+"Critical_Time",
+"Response_Limit",
+"Critical_Response",
+"Default_Gear"
+]
+}

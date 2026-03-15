@@ -1,0 +1,181 @@
+[
+{
+"sample_id":"VSV_001",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall allow gear shifting only when vehicle speed is above the minimum threshold.",
+"L3_requirement":"The TCU shall permit gear shifting when Vehicle_Speed exceeds Min_Shift_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Min_Shift_Speed THEN Shift_Enable = TRUE",
+"IF Vehicle_Speed <= Min_Shift_Speed THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed <= Min_Shift_Speed AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_Speed_Warning"
+]
+}
+},
+
+{
+"sample_id":"VSV_002",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent shifting when vehicle speed exceeds safe limits.",
+"L3_requirement":"The TCU shall inhibit gear shifting when Vehicle_Speed exceeds Max_Shift_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Max_Shift_Speed THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed <= Max_Shift_Speed THEN Shift_Enable = TRUE",
+"IF Vehicle_Speed > Max_Shift_Speed AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_OverSpeed_Warning"
+]
+}
+},
+
+{
+"sample_id":"VSV_003",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall allow downshift only when vehicle speed falls below a threshold.",
+"L3_requirement":"The TCU shall permit downshift when Vehicle_Speed is less than Downshift_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed < Downshift_Speed THEN Downshift_Enable = TRUE",
+"IF Vehicle_Speed >= Downshift_Speed THEN Downshift_Enable = FALSE",
+"IF Vehicle_Speed >= Downshift_Speed AND Downshift_Request = TRUE THEN Reject_Downshift",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Downshift_Enable = FALSE",
+"IF Vehicle_Speed < Critical_Low_Speed THEN Activate_LowSpeed_Mode"
+]
+}
+},
+
+{
+"sample_id":"VSV_004",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall allow upshift when vehicle speed exceeds calibrated threshold.",
+"L3_requirement":"The TCU shall trigger upshift when Vehicle_Speed exceeds Upshift_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Upshift_Speed THEN Trigger_Upshift",
+"IF Vehicle_Speed <= Upshift_Speed THEN Maintain_Current_Gear",
+"IF Vehicle_Speed > Upshift_Speed AND Engine_Load < Load_Limit THEN Trigger_Upshift",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Disable_Upshift",
+"IF Vehicle_Speed > Critical_Speed THEN Activate_Speed_Protection"
+]
+}
+},
+
+{
+"sample_id":"VSV_005",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent reverse engagement when vehicle speed is high.",
+"L3_requirement":"The TCU shall reject reverse engagement when Vehicle_Speed exceeds Reverse_Speed_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Reverse_Speed_Limit THEN Reverse_Engagement = Disabled",
+"IF Vehicle_Speed <= Reverse_Speed_Limit THEN Reverse_Engagement = Enabled",
+"IF Vehicle_Speed > Reverse_Speed_Limit AND Shift_Request = Reverse THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Reverse_Engagement = Disabled",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_Safety_Warning"
+]
+}
+},
+
+{
+"sample_id":"VSV_006",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall restrict shifting when vehicle speed is unstable.",
+"L3_requirement":"The TCU shall disable shift requests when vehicle speed fluctuation exceeds Speed_Variance."
+},
+"output":{
+"L4_requirements":[
+"IF Speed_Variation > Speed_Variance THEN Shift_Enable = FALSE",
+"IF Speed_Variation <= Speed_Variance THEN Shift_Enable = TRUE",
+"IF Speed_Variation > Speed_Variance AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Enable = FALSE",
+"IF Speed_Variation > Critical_Variance THEN Trigger_Diagnostic_Code"
+]
+}
+},
+
+{
+"sample_id":"VSV_007",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall enable shifting during cruising speeds.",
+"L3_requirement":"The TCU shall allow gear shifts when Vehicle_Speed is within Cruise_Speed_Range."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed >= Cruise_Min AND Vehicle_Speed <= Cruise_Max THEN Shift_Enable = TRUE",
+"IF Vehicle_Speed < Cruise_Min OR Vehicle_Speed > Cruise_Max THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed NOT_IN Cruise_Speed_Range AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_OverSpeed_Protection"
+]
+}
+},
+
+{
+"sample_id":"VSV_008",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall disable shifting when vehicle speed signal is invalid.",
+"L3_requirement":"The TCU shall inhibit gear shifting when vehicle speed signal validity equals FALSE."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed_Signal_Valid = FALSE THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed_Signal_Valid = TRUE THEN Shift_Enable = TRUE",
+"IF Vehicle_Speed_Signal_Valid = FALSE AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Trigger_Diagnostic_Code",
+"IF Vehicle_Speed_Signal_Valid = FALSE THEN Maintain_Current_Gear"
+]
+}
+},
+
+{
+"sample_id":"VSV_009",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall restrict shifting during very low vehicle speeds.",
+"L3_requirement":"The TCU shall prevent gear shift when Vehicle_Speed is below Idle_Speed."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed < Idle_Speed THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed >= Idle_Speed THEN Shift_Enable = TRUE",
+"IF Vehicle_Speed < Idle_Speed AND Shift_Request = TRUE THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Shift_Enable = FALSE",
+"IF Vehicle_Speed < Critical_Low_Speed THEN Activate_Idle_Mode"
+]
+}
+},
+
+{
+"sample_id":"VSV_010",
+"instruction":"Generate detailed L4 transmission software requirements from the given L2 and L3 requirements.",
+"input":{
+"L2_requirement":"The transmission shall prevent park engagement when vehicle speed exceeds threshold.",
+"L3_requirement":"The TCU shall reject park engagement when Vehicle_Speed exceeds Park_Speed_Limit."
+},
+"output":{
+"L4_requirements":[
+"IF Vehicle_Speed > Park_Speed_Limit THEN Park_Engagement = Disabled",
+"IF Vehicle_Speed <= Park_Speed_Limit THEN Park_Engagement = Enabled",
+"IF Vehicle_Speed > Park_Speed_Limit AND Shift_Request = Park THEN Reject_Shift_Request",
+"IF Vehicle_Speed_Sensor_Fault = TRUE THEN Park_Engagement = Disabled",
+"IF Vehicle_Speed > Critical_Speed THEN Trigger_Safety_Warning"
+]
+}
+}
+]

@@ -1,0 +1,13 @@
+{
+"signals":[
+"Clutch_Slip",
+"Engine_RPM",
+"Input_Shaft_RPM",
+"Clutch_State",
+"Clutch_Pressure",
+"Clutch_Slip_Fault",
+"Slip_Duration",
+"Slip_Timer",
+"Fault_Source"
+]
+}

@@ -1,0 +1,10 @@
+{
+"fault_conditions":[
+"Oil_Temp_Sensor_Fault",
+"Engine_Status_Sensor_Fault",
+"Vehicle_Speed_Sensor_Fault",
+"Transmission_Fault",
+"CAN_Communication_Fault",
+"TCU_Internal_Fault"
+]
+}

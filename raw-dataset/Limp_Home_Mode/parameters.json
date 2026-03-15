@@ -1,0 +1,10 @@
+{
+"parameters":[
+"Limp_Speed_Limit",
+"Safe_Limp_Speed",
+"Torque_Limit",
+"Critical_Speed",
+"Limp_Mode_Gears",
+"Default_Gear"
+]
+}
